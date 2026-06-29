@@ -1,0 +1,10 @@
+print ~ { / 2 }
+print ~ { / -2 }
+print ~ { / 2i }
+print ~ { / -2i }
+print ~ { / 2j }
+print ~ { / 2k }
+print ~ { / 2.0 }
+print ~ { / -2.0 }
+print ~ { / 2.0i }
+print ~ { / -2.0i }

@@ -1,0 +1,5 @@
+rule match_key_val [
+  match_key_val [ X -> [ Y ] ] => { X -> [ Y ] }
+];
+
+print { match_key_val [ "x" -> [ "y" ] ] }

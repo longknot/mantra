@@ -1,0 +1,39 @@
+name: Language Proposal
+description: Propose a Mantra syntax, semantic, or runtime behavior change.
+title: "[proposal]: "
+labels:
+  - proposal
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What does this proposal make possible or simpler?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed syntax or behavior
+      description: Include concrete Mantra examples.
+      render: mantra
+    validations:
+      required: true
+  - type: textarea
+    id: semantics
+    attributes:
+      label: Semantics
+      description: Explain the intended tree behavior, evaluation behavior, and rewrite behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: interactions
+    attributes:
+      label: Interactions and risks
+      description: Discuss scopes, namespaces, packages, inference, compatibility, ambiguity, and alternatives.
+  - type: textarea
+    id: tests
+    attributes:
+      label: Suggested fixtures
+      description: Candidate `.in` and `.out` cases for `tests/cases`.
+

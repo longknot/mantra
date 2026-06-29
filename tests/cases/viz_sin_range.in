@@ -1,0 +1,9 @@
+import viz;
+
+k = 0.2;
+step = 0.2;
+
+{ viz.line_range "chart" ( -k .. k by step ) ( sin x ) };
+{ assign_path "chart.width" 640 };
+{ assign_path "chart.height" 400 };
+{ viz.show "chart" }

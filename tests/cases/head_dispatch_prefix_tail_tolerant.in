@@ -1,0 +1,5 @@
+rule mappings [
+  mappings "The" => "A"
+]
+
+print { mappings "The" "quick" "brown" }

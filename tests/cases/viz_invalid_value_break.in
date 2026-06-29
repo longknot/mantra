@@ -1,0 +1,7 @@
+import viz;
+
+k = 0.2;
+step = 0.2;
+
+{ viz.line_range "chart" ( -k .. k by step ) ( sin ( / x ) ) };
+{ viz.show "chart" }

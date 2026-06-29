@@ -1,0 +1,2 @@
+doc.value = 1;
+json_save doc "__TEMP_DIR__/absent/output.json";

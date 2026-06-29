@@ -1,0 +1,6 @@
+"profiles.simple_rows.kind"
+"profiles.simple_rows.columns[3]"
+"cols[1]" "cols[2]" "cols[3]"
+( a -> 1 )
+( b -> 2 )
+( c -> 3 )

@@ -1,0 +1,4 @@
+request.url = "__HTTP_BASE__/count?id=fixture-execute-once";
+system http response request;
+print { response.body.count }
+print { response.body.count }

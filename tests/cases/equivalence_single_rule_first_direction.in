@@ -1,0 +1,1 @@
+print { selector first 1 ? [ x <=> y ] }

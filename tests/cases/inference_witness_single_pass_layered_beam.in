@@ -1,0 +1,10 @@
+{ mantra.inference.beam = 6 }
+witnesses = {
+  ( + x - x <=> 0 ) => ( + - ( + - x ) <=> + x ) ?|=
+  [ + 0 => ,
+    + x ( + - x ) => + 0,
+    x ==> ( - x ),
+    { U -- <=> V -- } => { + x all U <=> + x all V }
+  ] : 5
+}
+print { witnesses }

@@ -1,0 +1,3 @@
+--package-root
+tests/modules/packages
+--package-root=tests/third_party_packages

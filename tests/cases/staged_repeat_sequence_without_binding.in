@@ -1,0 +1,1 @@
+print { [ item ] :: [ a b c ] }

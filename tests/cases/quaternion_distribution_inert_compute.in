@@ -1,0 +1,4 @@
+print ~ { * ( + x 2i ) ( + 3 4j ) }
+print ~ { * ( + 1 2i ) ( + y 4j ) }
+print ~ { * ( + 1 2i ) 3j }
+print ~ { * ( + 1 2i ) ( + 3 4j ) ( + 5 6k ) }

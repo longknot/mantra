@@ -1,0 +1,2 @@
+print { ~ sin ( tan 0 ) }
+print { ~ sqrt ( + 2 + 2 ) }

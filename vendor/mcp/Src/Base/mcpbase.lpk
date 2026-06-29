@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <Name Value="mcpbase"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Version Major="1"/>
+    <Files>
+      <Item>
+        <Filename Value="mcp.handler.pas"/>
+        <UnitName Value="mcp.handler"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.application.stdio.pas"/>
+        <UnitName Value="mcp.application.stdio"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.transport.base.pas"/>
+        <UnitName Value="mcp.transport.base"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.logging.pas"/>
+        <UnitName Value="mcp.logging"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.dispatcher.base.pas"/>
+        <UnitName Value="mcp.dispatcher.base"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.transport.stdio.pas"/>
+        <UnitName Value="mcp.transport.stdio"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.stdhandlers.pas"/>
+        <UnitName Value="mcp.stdhandlers"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.types.pas"/>
+        <UnitName Value="mcp.types"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.strings.pas"/>
+        <UnitName Value="mcp.strings"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.resources.pas"/>
+        <UnitName Value="mcp.resources"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.prompts.pas"/>
+        <UnitName Value="mcp.prompts"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.tools.pas"/>
+        <UnitName Value="mcp.tools"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.utils.pas"/>
+        <UnitName Value="mcp.utils"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.controller.pas"/>
+        <UnitName Value="mcp.controller"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.dispatcher.serversocket.pas"/>
+        <UnitName Value="mcp.dispatcher.serversocket"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.transport.socket.pas"/>
+        <UnitName Value="mcp.transport.socket"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.dispatcher.clientsocket.pas"/>
+        <UnitName Value="mcp.dispatcher.clientsocket"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.application.socket.pas"/>
+        <UnitName Value="mcp.application.socket"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.application.http.pas"/>
+        <UnitName Value="mcp.application.http"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.transport.http.pas"/>
+        <UnitName Value="mcp.transport.http"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.dispatcher.http.pas"/>
+        <UnitName Value="mcp.dispatcher.http"/>
+      </Item>
+    </Files>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

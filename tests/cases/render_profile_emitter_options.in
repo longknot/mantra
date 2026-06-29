@@ -1,0 +1,24 @@
+import utils;
+
+p = profiles.custom_table -> {
+  kind -> "tabular",
+  options -> ( header -> 1, csv -> ( header -> 0, delimiter -> ";" ) ),
+  rows -> ( kind -> "trie_children", path_suffix -> ".steps" ),
+  columns -> [
+    ( name -> "STEP", kind -> "path_segment", index -> -1 )
+    ( name -> "RULE", kind -> "relative_get", path -> ".rule_name" )
+    ( name -> "BEFORE", kind -> "relative_get", path -> ".before" )
+  ]
+};
+
+w = witness.w1 -> {
+  steps -> [
+    { rule_name -> "repeat_seq", before -> "a;b" },
+    { rule_name -> "ih", before -> "s1" }
+  ]
+};
+
+{ utils.make_trie p };
+{ utils.make_trie w };
+printf "%s" [ render csv profiles.custom_table "witness.w1" ];
+printf "%s" [ render columns profiles.custom_table "witness.w1" ]

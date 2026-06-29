@@ -1,0 +1,11 @@
+import utils;
+
+w = witness.w1 -> {
+  steps -> [
+    { rule_name -> "repeat_seq", direction -> "forward", anchor -> 1, before -> "s0", after -> "s1" },
+    { rule_name -> "ih", direction -> "reverse", anchor -> 2, before -> "s1", after -> "s2" }
+  ]
+};
+
+{ utils.make_trie w };
+printf "%s" [ render csv profiles.witness_steps "witness.w1" ]

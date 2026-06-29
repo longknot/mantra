@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <Name Value="mcpclient"/>
+    <Type Value="RunAndDesignTime"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Files>
+      <Item>
+        <Filename Value="rpc.clienttool.pp"/>
+        <UnitName Value="rpc.clienttool"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.client.base.pas"/>
+        <UnitName Value="MCP.Client.Base"/>
+      </Item>
+      <Item>
+        <Filename Value="rpc.client.process.pas"/>
+        <UnitName Value="rpc.client.process"/>
+      </Item>
+      <Item>
+        <Filename Value="rpc.client.stdio.pas"/>
+        <UnitName Value="rpc.client.stdio"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.client.calls.pas"/>
+        <UnitName Value="MCP.Client.Calls"/>
+      </Item>
+      <Item>
+        <Filename Value="mcp.client.pas"/>
+        <UnitName Value="mcp.client"/>
+      </Item>
+    </Files>
+    <RequiredPkgs>
+      <Item>
+        <PackageName Value="mcpbase"/>
+      </Item>
+      <Item>
+        <PackageName Value="FCL"/>
+      </Item>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

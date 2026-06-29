@@ -1,0 +1,27 @@
+# Build outputs
+/bin/
+/build/
+/dist/
+/site/
+
+# Free Pascal generated files
+*.a
+*.compiled
+*.dbg
+*.exe
+*.o
+*.or
+*.ppu
+*.rsj
+*.s
+
+# Vendored dependency build outputs
+/vendor/mantra-trie/test-trie
+
+# Local/editor state
+.DS_Store
+*.bak
+*.swp
+*~
+/.idea/
+/.vscode/

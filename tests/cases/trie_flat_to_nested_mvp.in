@@ -1,0 +1,15 @@
+import utils;
+
+source.a.b = 1;
+source.a.c = 2;
+source.arr.one.x = 3;
+
+FLAT = source.**;
+
+{ utils.flat_to_nested out FLAT };
+{ assign_path "tmp.k" 42 };
+
+print { out.source.a.b }
+print { out.source.a.c }
+print { out.source.arr.one.x }
+print { tmp.k }

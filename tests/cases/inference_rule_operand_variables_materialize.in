@@ -1,0 +1,8 @@
+ih_lhs = 1;
+ih_rhs = 2;
+ih = ih_lhs => ih_rhs;
+
+print { 1 => 2 ?|= [ ih ] : 1 };
+print { witness.w1.ok };
+print { witness.w1.count };
+print { witness.w1.steps[1].rule_name };

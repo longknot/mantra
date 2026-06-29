@@ -1,0 +1,2 @@
+scope { x = 2, y = x, global main.result = y };
+print { result }

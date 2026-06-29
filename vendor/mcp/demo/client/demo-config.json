@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "weather-demo": {
+      "command": "../weather",
+      "args": []
+    },
+    "mock-server": {
+      "command": "./mockserver",
+      "args": []
+    }
+  }
+}

@@ -1,0 +1,1 @@
+--debugger-cli --break-source=3 tests/modules/debugger_breakpoint_two_statements.m

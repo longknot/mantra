@@ -1,0 +1,6 @@
+EVENT[diag] inference profile attempt=1 policy=default beam=1 result=failure generated=1 admitted=1 pruned_beam=0 pruned_visited=0 deduped=0 abandoned_success=0 forward=1 reverse=0 expanded=1 max_queue=1 max_frontier=1
+EVENT[diag] inference profile rule attempt=1 policy=default beam=1 name="step" direction=forward generated=1 admitted=1 pruned_beam=0 pruned_visited=0 deduped=0 abandoned_success=0
+0
+EVENT[diag] inference profile attempt=1 policy=default beam=1 result=failure generated=1 admitted=1 pruned_beam=0 pruned_visited=0 deduped=0 abandoned_success=0 forward=0 reverse=1 expanded=1 max_queue=1 max_frontier=1
+EVENT[diag] inference profile rule attempt=1 policy=default beam=1 name="step" direction=reverse generated=1 admitted=1 pruned_beam=0 pruned_visited=0 deduped=0 abandoned_success=0
+0

@@ -1,0 +1,1 @@
+tests/modules/pkg_main_import_math_golden_mean.m --set n=20

@@ -1,0 +1,6 @@
+dict.obj1.a = 1;
+dict.obj1.c = 3;
+dict.obj2.a = 9;
+dict.obj2.b = 8;
+dict.obj2 >:= dict.obj1;
+print { query_values dict.obj2.* }

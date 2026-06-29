@@ -1,0 +1,4 @@
+ih = << + m : + n >> => << + n : + m >>;
+
+print { ih };
+print { + m : + n ? [ ih ] };

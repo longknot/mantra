@@ -1,0 +1,2 @@
+addinv = + x - x <=> 0
+print { addinv ? [ { U -- <=> V -- } => { + x all U <=> + x all V } ] }

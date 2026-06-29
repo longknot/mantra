@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build and test in FPC container
+        run: |
+          docker run --rm \
+            --volume "$PWD:/ws" \
+            --workdir /ws \
+            docker.io/olatov/fpc:latest \
+            bash -lc '
+              set -euo pipefail
+
+              if command -v apt-get >/dev/null 2>&1; then
+                apt-get update
+                DEBIAN_FRONTEND=noninteractive apt-get install -y \
+                  ca-certificates \
+                  parallel \
+                  python3
+              fi
+
+              command -v fpc >/dev/null
+              command -v python3 >/dev/null
+
+              echo "FPC version: $(fpc -iV)"
+              echo "Python version: $(python3 --version)"
+              if command -v parallel >/dev/null 2>&1; then
+                parallel --version | head -n 1
+              else
+                echo "GNU parallel not found; tests/run.sh will fall back to serial execution."
+              fi
+
+              mkdir -p bin build
+              ./build.sh --all
+
+              tests/run.sh --strict --no-build
+              tests/server_smoke.sh --no-build
+              tests/mcp_smoke.sh --no-build
+            '

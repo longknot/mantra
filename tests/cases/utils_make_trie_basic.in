@@ -1,0 +1,20 @@
+import utils;
+
+p = profiles.simple_rows -> {
+  kind -> "tabular",
+  header -> 1,
+  rows -> { kind -> "identity" },
+  columns -> [
+    { name -> "NAME", expr -> 1 },
+    { name -> "VALUE", expr -> 2 },
+    { name -> "META", expr -> 3 }
+  ]
+};
+
+{ utils.make_trie p };
+print { get "profiles.simple_rows.kind" };
+print { get "profiles.simple_rows.header" };
+print { get "profiles.simple_rows.rows.kind" };
+print { get "profiles.simple_rows.columns[1]" };
+print { get "profiles.simple_rows.columns[2]" };
+print { get "profiles.simple_rows.columns[3]" };

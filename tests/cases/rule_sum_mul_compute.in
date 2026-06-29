@@ -1,0 +1,4 @@
+define sum mul;
+rule sum [ sum X -- => + all X ];
+rule mul [ mul X -- => * all X ];
+print ~ { sum ( mul 1 9 ) }

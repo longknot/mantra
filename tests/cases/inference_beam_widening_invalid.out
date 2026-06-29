@@ -1,0 +1,2 @@
+EVENT[diag] invalid mantra.inference.beam_max value (positive mantra.inference.beam_delta requires integer >= initial beam 1)
+0

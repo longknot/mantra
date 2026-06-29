@@ -1,0 +1,4 @@
+import viz;
+
+{ viz.line_range "chart" ( -1.0 .. 1.0 by 0.5 ) ( * x x ) };
+{ viz.show "chart" }

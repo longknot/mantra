@@ -1,0 +1,1 @@
+--break-inference=*step=1* tests/modules/debugger_breakpoint_inference.m

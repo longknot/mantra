@@ -1,0 +1,2 @@
+json_load "tests/cases/json_encode_roundtrip.json" doc;
+print { json_encode doc }

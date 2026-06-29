@@ -1,0 +1,20 @@
+import utils;
+
+p = profiles.exprs -> {
+  kind -> "tabular",
+  options -> ( header -> 1 ),
+  rows -> ( kind -> "trie_children", path_suffix -> ".steps" ),
+  columns -> [
+    ( name -> "EXPR", kind -> "relative_get", path -> ".expr" )
+  ]
+};
+
+w = witness.w1 -> {
+  steps -> [
+    { expr -> + m n }
+  ]
+};
+
+{ utils.make_trie p };
+{ utils.make_trie w };
+printf "%s" [ render columns profiles.exprs "witness.w1" ]

@@ -1,0 +1,6 @@
+import utils;
+commute = + M N <=> + N M;
+rules = [ commute ];
+{ W = [ + 1 2 ] => [ + 2 1 ] ?|= rules : 1 }
+mantra.effects.display.evaluate = 1;
+{ utils.witness_print_steps W }

@@ -1,0 +1,3 @@
+mantra.effects.display.compute = 1
+{ ~ printf "compute %d" [ 7 ] }
+print "done"

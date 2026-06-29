@@ -1,0 +1,2 @@
+scope { global main.result = 2 };
+print { result }

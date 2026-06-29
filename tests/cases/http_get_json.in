@@ -1,0 +1,10 @@
+request.method = "GET";
+request.url = "__HTTP_BASE__/json";
+request.query.name = "Ada Lovelace";
+request.headers.Accept = "application/json";
+system http response request;
+print { response.ok }
+print { response.status }
+print { response.body.message }
+print { get "response.body.query.name[1]" }
+print { get "response.headers.X-Fixture" }

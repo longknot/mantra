@@ -1,0 +1,89 @@
+Debugger paused: breakpoint
+Breakpoint hit: source debugger_inspect_tree_protocol.m:5
+@inspect-children	begin
+@inspect-children	domain	vars
+@inspect-children	query	
+@inspect-children	resolved	
+@inspect-children	present	0
+@inspect-children	ref	-1
+@inspect-children	has-children	1
+@inspect-children	preview	
+@inspect-children	count	2
+@inspect-children	child	dict	dict		-1	1	
+@inspect-children	child	mantra	mantra		-1	1	
+@inspect-children	end
+@inspect-children	begin
+@inspect-children	domain	vars
+@inspect-children	query	dict
+@inspect-children	resolved	
+@inspect-children	present	0
+@inspect-children	ref	-1
+@inspect-children	has-children	1
+@inspect-children	preview	
+@inspect-children	count	2
+@inspect-children	child	obj1	dict.obj1		-1	1	
+@inspect-children	child	obj2	dict.obj2		-1	1	
+@inspect-children	end
+@inspect-children	begin
+@inspect-children	domain	vars
+@inspect-children	query	dict.obj1.attr
+@inspect-children	resolved	
+@inspect-children	present	0
+@inspect-children	ref	-1
+@inspect-children	has-children	1
+@inspect-children	preview	
+@inspect-children	count	2
+@inspect-children	child	x	dict.obj1.attr.x	main.dict.obj1.attr.x	19	0	1
+@inspect-children	child	y	dict.obj1.attr.y	main.dict.obj1.attr.y	20	0	2
+@inspect-children	end
+@inspect-value	begin
+@inspect-value	domain	vars
+@inspect-value	query	dict.obj1.attr.x
+@inspect-value	resolved	main.dict.obj1.attr.x
+@inspect-value	present	1
+@inspect-value	ref	19
+@inspect-value	has-children	0
+@inspect-value	preview	1
+@inspect-value	end
+@inspect-children	begin
+@inspect-children	domain	settings
+@inspect-children	query	
+@inspect-children	resolved	
+@inspect-children	present	0
+@inspect-children	ref	-1
+@inspect-children	has-children	1
+@inspect-children	preview	
+@inspect-children	count	1
+@inspect-children	child	mantra	mantra		-1	1	
+@inspect-children	end
+@inspect-children	begin
+@inspect-children	domain	settings
+@inspect-children	query	mantra
+@inspect-children	resolved	
+@inspect-children	present	0
+@inspect-children	ref	-1
+@inspect-children	has-children	1
+@inspect-children	preview	
+@inspect-children	count	1
+@inspect-children	child	inference	mantra.inference		-1	1	
+@inspect-children	end
+@inspect-children	begin
+@inspect-children	domain	settings
+@inspect-children	query	mantra.inference
+@inspect-children	resolved	
+@inspect-children	present	0
+@inspect-children	ref	-1
+@inspect-children	has-children	1
+@inspect-children	preview	
+@inspect-children	count	1
+@inspect-children	child	beam	mantra.inference.beam	main.mantra.inference.beam	22	0	5
+@inspect-children	end
+@inspect-value	begin
+@inspect-value	domain	settings
+@inspect-value	query	mantra.inference.beam
+@inspect-value	resolved	main.mantra.inference.beam
+@inspect-value	present	1
+@inspect-value	ref	22
+@inspect-value	has-children	0
+@inspect-value	preview	5
+@inspect-value	end

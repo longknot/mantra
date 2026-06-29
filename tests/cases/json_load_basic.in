@@ -1,0 +1,8 @@
+json_load "tests/cases/json_load_basic.json" doc;
+print { doc.user.name }
+print { doc.user.age }
+print { doc.user.active }
+print { doc.user.score }
+print { query_values doc.user.tags[1] }
+print { query_values doc.user.tags[2] }
+print { doc.user.meta }

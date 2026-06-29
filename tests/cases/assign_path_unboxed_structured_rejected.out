@@ -1,0 +1,1 @@
+Error: assign_path path must resolve to scalar path text; wrap structured values in (...) or {...}

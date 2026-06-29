@@ -1,0 +1,8 @@
+import math;
+
+define ddx exp x;
+
+target = * ( exp x ) ( 1 );
+
+print { ddx ( exp x ) ? [ math.ddx_exp ] ? [ math.ddx_self ] }
+print { ddx ( exp x ) => target |= [ math.ddx_exp, math.ddx_self ] : 2 }

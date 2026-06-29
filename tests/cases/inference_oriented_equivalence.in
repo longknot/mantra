@@ -1,0 +1,6 @@
+contract = 1 <=> 2;
+
+print { 1 => 2 |= [ forward contract ] };
+print { 2 => 1 |= [ forward contract ] };
+print { 1 => 2 |= [ reverse contract ] };
+print { 2 => 1 |= [ reverse contract ] };

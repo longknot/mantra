@@ -1,0 +1,13 @@
+{ mantra.effects.display.evaluate = true }
+
+ih = + p => + p;
+
+rule test [
+  test IH P => {
+    { ih_p = IH ? P },
+    { printf "ih_p = %t" ih_p }
+  }
+];
+
+{ test ih [ p ==> + 1 ] }
+{ test ih [ p ==> + 1 ] }

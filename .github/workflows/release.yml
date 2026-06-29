@@ -1,0 +1,106 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to release, for example v0.1.0-alpha.1
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release-linux:
+    name: Linux x86_64 release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Resolve release tag
+        id: release
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            tag="${{ inputs.tag }}"
+          else
+            tag="${GITHUB_REF_NAME}"
+          fi
+          if [[ ! "$tag" =~ ^v[0-9]+(\.[0-9]+)*(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Invalid release tag: $tag" >&2
+            exit 2
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.release.outputs.tag }}
+
+      - name: Build, test, and package
+        run: |
+          docker run --rm \
+            --volume "$PWD:/ws" \
+            --workdir /ws \
+            --env "MANTRA_VERSION=${{ steps.release.outputs.tag }}" \
+            docker.io/olatov/fpc:latest \
+            bash -lc '
+              set -euo pipefail
+
+              if command -v apt-get >/dev/null 2>&1; then
+                apt-get update
+                DEBIAN_FRONTEND=noninteractive apt-get install -y \
+                  ca-certificates \
+                  parallel \
+                  python3
+              fi
+
+              command -v fpc >/dev/null
+              command -v python3 >/dev/null
+
+              mkdir -p bin build
+              ./build.sh --all
+
+              tests/run.sh --strict --no-build
+              tests/server_smoke.sh --no-build
+              tests/mcp_smoke.sh --no-build
+
+              package_name="mantra-${MANTRA_VERSION}-linux-x86_64"
+              package_dir="dist/${package_name}"
+              rm -rf dist
+              mkdir -p "$package_dir"
+
+              cp bin/mantra "$package_dir/"
+              cp bin/mantra_server "$package_dir/"
+              cp bin/mantra_mcp_server "$package_dir/"
+
+              for doc in README.md LICENSE KNOWN_LIMITATIONS.md SECURITY.md THIRD_PARTY_NOTICES.md; do
+                if [[ -f "$doc" ]]; then
+                  cp "$doc" "$package_dir/"
+                fi
+              done
+
+              tar -C dist -czf "dist/${package_name}.tar.gz" "$package_name"
+              sha256sum "dist/${package_name}.tar.gz" > "dist/${package_name}.tar.gz.sha256"
+            '
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${{ steps.release.outputs.tag }}"
+          gh release create "$tag" \
+            "dist/mantra-${tag}-linux-x86_64.tar.gz" \
+            "dist/mantra-${tag}-linux-x86_64.tar.gz.sha256" \
+            --title "$tag" \
+            --generate-notes \
+            --verify-tag

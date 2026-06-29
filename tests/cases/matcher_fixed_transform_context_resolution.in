@@ -1,0 +1,16 @@
+x = 1;
+fixed = x \ => 2;
+schema = x => 2;
+fixed_alias = \ schema;
+
+print { 1 ? [ fixed ] };
+print { 3 ? [ fixed ] };
+print { 1 ? [ fixed_alias ] };
+print { 3 ? [ fixed_alias ] };
+
+x = 3;
+
+print { 1 ? [ fixed ] };
+print { 3 ? [ fixed ] };
+print { 1 ? [ fixed_alias ] };
+print { 3 ? [ fixed_alias ] };

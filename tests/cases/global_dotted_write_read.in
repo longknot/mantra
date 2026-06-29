@@ -1,0 +1,4 @@
+global dict.obj1.a = 1;
+
+print { get "dict.obj1.a" };
+print { query_children dict.obj1 };

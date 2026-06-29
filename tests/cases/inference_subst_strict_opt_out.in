@@ -1,0 +1,2 @@
+mantra.substitution.strict = 0
+print { x => y |= [ x ==> y ] : 1 }

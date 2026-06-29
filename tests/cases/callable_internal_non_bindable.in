@@ -1,0 +1,3 @@
+callable __h;
+print { __h ? [ x ==> ( - x ) ] : 1 };
+print { __h ? [ __h => "ok" ] : 1 };

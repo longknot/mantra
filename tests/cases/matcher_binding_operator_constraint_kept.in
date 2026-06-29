@@ -1,0 +1,7 @@
+simplify = [
+  + a - a => 0
+];
+
+input = + x + x;
+
+print { input ? simplify };

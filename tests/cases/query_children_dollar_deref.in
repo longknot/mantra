@@ -1,0 +1,5 @@
+dict.obj2.b = 2;
+dict.obj1.a = 1;
+P = "dict";
+
+print { query_children $P }

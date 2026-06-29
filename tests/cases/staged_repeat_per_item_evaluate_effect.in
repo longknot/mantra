@@ -1,0 +1,2 @@
+mantra.effects.display.evaluate = 1;
+{ [ scope { printf "x" } ] :: 3 }

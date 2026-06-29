@@ -1,0 +1,8 @@
+doc.version = 1;
+json_save doc "__TEMP_DIR__/overwrite.json";
+doc.version = 2;
+doc.current = true;
+json_save doc "__TEMP_DIR__/overwrite.json";
+json_load "__TEMP_DIR__/overwrite.json" copy;
+print { copy.version }
+print { copy.current }

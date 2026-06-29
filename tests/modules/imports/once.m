@@ -1,0 +1,3 @@
+package once;
+
+{ 42 };

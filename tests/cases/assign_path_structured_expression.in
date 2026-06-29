@@ -1,0 +1,9 @@
+assign_path "root.expr1" ( + m n );
+print { get "root.expr1" };
+
+{ assign_path "root.expr2" ( + m n ) };
+print { get "root.expr2" };
+
+y = + 3 4;
+{ assign_path "root.expr3" ( y ) };
+print { get "root.expr3" };

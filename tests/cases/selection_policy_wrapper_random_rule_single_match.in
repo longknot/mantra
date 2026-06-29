@@ -1,0 +1,2 @@
+print { selector randomrule [ 1 ] ? [ [ 2 ] => 20, [ x ] => 10 ] }
+print { selector "random-rule" [ 1 ] ? [ [ 2 ] => 20, [ x ] => 10 ] }

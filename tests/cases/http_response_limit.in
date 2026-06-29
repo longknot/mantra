@@ -1,0 +1,6 @@
+request.url = "__HTTP_BASE__/large";
+request.max_response_bytes = 32;
+system http response request;
+print { response.ok }
+print { response.status }
+print { response.error.kind }

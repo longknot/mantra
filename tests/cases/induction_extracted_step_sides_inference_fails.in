@@ -1,0 +1,22 @@
+{ max_steps = 8 }
+
+ih_subject = + m n : + p;
+ih_target = + ( + m : + p ) ( + n : + p );
+ih = + m n : + p => + ( + m : + p ) ( + n : + p );
+
+step = { ih ? [ p ==> + p 1 ] };
+
+subject_direct = { ih_subject ? [ p ==> + p 1 ] };
+target_direct = { ih_target ? [ p ==> + p 1 ] };
+
+subject_extracted = { step ? [ X -- => Y -- => all X ] };
+target_extracted = { step ? [ X -- => Y -- => all Y ] };
+
+print { subject_direct };
+print { subject_extracted };
+
+{ subject_direct => target_direct ?|= [ ih ] : max_steps }
+print { witness.w1.ok };
+
+{ subject_extracted => target_extracted ?|= [ ih ] : max_steps }
+print { witness.w2.ok };

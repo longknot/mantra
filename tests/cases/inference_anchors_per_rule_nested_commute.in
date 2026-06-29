@@ -1,0 +1,4 @@
+{ mantra.inference.budget = 10 }
+{ mantra.inference.anchors_per_rule = 8 }
+
+print { [ + ( + 1 2 ) ( + 3 4 ) ] => [ + ( + 1 2 ) ( + 4 3 ) ] |= [ + M N <=> + N M ] : 1 }

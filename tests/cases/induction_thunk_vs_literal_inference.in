@@ -1,0 +1,17 @@
+{ max_steps = 8 }
+
+ih = + m n : + p => + ( + m : + p ) ( + n : + p );
+
+subject_thunk = { (+ m n : + p) ? [ p ==> + p 1 ] };
+target_thunk = { (+ ( + m : + p ) ( + n : + p )) ? [ p ==> + p 1 ] };
+
+subject_literal = ' + m n : + p 1 ';
+target_literal = ' + ( + m : + p 1 ) ( + n : + p 1 ) ';
+
+{ subject_thunk => target_thunk ?|= [ ih ] : max_steps }
+print { witness.w1.ok };
+print { witness.w1.count };
+
+{ subject_literal => target_literal ?|= [ ih ] : max_steps }
+print { witness.w2.ok };
+print { witness.w2.count };

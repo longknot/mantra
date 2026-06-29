@@ -1,0 +1,1 @@
+--debugger-cli --break-source=debugger_inspect_tree_protocol.m:5 tests/modules/debugger_inspect_tree_protocol.m

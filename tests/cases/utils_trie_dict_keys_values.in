@@ -1,0 +1,8 @@
+import utils;
+
+dict.obj2.attr.z = 6;
+dict.obj2.attr.x = 4;
+dict.obj2.attr.y = 5;
+
+print { utils.dict_keys dict.obj2.attr.* }
+print { utils.dict_values dict.obj2.attr.* }

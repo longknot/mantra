@@ -1,0 +1,4 @@
+print { 1 => 2 ?|= [ 1 => 2 ] }
+print { witness.w1.ok }
+print { witness.w1.count }
+print { witness.w1.steps* }

@@ -1,0 +1,71 @@
+name: Bug Report
+description: Report a Mantra runtime, parser, documentation, or tooling problem.
+title: "[bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Mantra is an experimental alpha language. Please check `KNOWN_LIMITATIONS.md`
+        before filing behavior that may already be documented as incomplete.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What went wrong?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Parser/syntax
+        - Evaluation
+        - Rewriting/transformation
+        - Inference
+        - Packages/modules
+        - CLI/runtime
+        - Server/MCP
+        - Documentation
+        - Build/CI
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Minimal Mantra input
+      description: Prefer a small input that can become a fixture in `tests/cases`.
+      render: mantra
+  - type: input
+    id: command
+    attributes:
+      label: Command
+      description: Example: `./bin/mantra --raw example.m`
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      render: text
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      render: text
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, architecture, FPC version, Mantra commit/tag.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I checked `KNOWN_LIMITATIONS.md`.
+        - label: This is not a security report. Security-sensitive issues should follow `SECURITY.md`.
+

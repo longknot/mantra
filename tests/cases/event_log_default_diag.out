@@ -1,0 +1,2 @@
+EVENT[diag] substitution strictness failed: vars(LHS) must equal vars(RHS)
+x

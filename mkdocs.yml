@@ -1,0 +1,234 @@
+site_name: Mantra Manual
+site_description: User manual for the Mantra experimental language and runtime.
+repo_name: mantra
+docs_dir: manual
+repo_url: https://github.com/longknot/mantra
+
+theme:
+  name: material
+  logo: assets/mantra-nested-scopes-2.svg
+  palette:
+    - scheme: default
+      primary: green
+      accent: amber
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: switch to dark mode
+    - scheme: slate
+      primary: green
+      accent: amber
+      toggle:
+        icon: material/toggle-switch
+        name: switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Overview: getting-started.md
+      - What Mantra Is: getting-started/what-mantra-is.md
+      - Installation and Prerequisites: getting-started/installation-and-prerequisites.md
+      - Building the Runtime: getting-started/building-the-runtime.md
+      - Running Programs:
+          - Overview: getting-started/running-programs.md
+          - Standard Input: getting-started/running-programs/standard-input.md
+          - File Input: getting-started/running-programs/file-input.md
+          - Shell Quoting: getting-started/running-programs/shell-quoting.md
+      - Reading Runtime Output:
+          - Overview: getting-started/reading-runtime-output.md
+          - Print Statements: getting-started/reading-runtime-output/print-statements.md
+          - Debug Output Modes: getting-started/reading-runtime-output/debug-output-modes.md
+  - Language Model:
+      - Overview: language-model/index.md
+      - Programs as Trees:
+          - Overview: language-model/programs-as-trees.md
+          - User-Visible AST Shape: language-model/programs-as-trees/user-visible-ast-shape.md
+          - Scope Nodes: language-model/programs-as-trees/scope-nodes.md
+      - Values, Nodes, and Expressions: language-model/values-nodes-expressions.md
+      - Evaluation Model:
+          - Overview: language-model/evaluation-model.md
+          - Evaluation vs Compute: language-model/evaluation-model/evaluation-vs-compute.md
+          - Statement Output: language-model/evaluation-model/statement-output.md
+      - Rewriting and Transformation Model:
+          - Overview: language-model/rewriting-transformation-model.md
+          - Transform Operators: language-model/rewriting-transformation-model/transform-operators.md
+          - Selection Rewrite Model: language-model/rewriting-transformation-model/selection-rewrite-model.md
+      - Stability Notes:
+          - Overview: language-model/stability-notes.md
+          - Fixture-Backed Behavior: language-model/stability-notes/fixture-backed-behavior.md
+          - Design-Note Behavior: language-model/stability-notes/design-note-behavior.md
+  - Syntax:
+      - Overview: syntax/index.md
+      - Tokens and Whitespace:
+          - Overview: syntax/tokens-whitespace.md
+          - Delimiters and Scope Tokens: syntax/tokens-whitespace/delimiters-scope-tokens.md
+          - Operator Tokens: syntax/tokens-whitespace/operator-tokens.md
+      - List Containers: syntax/list-containers.md
+      - Expressions: syntax/expressions.md
+      - Evaluation Scopes: syntax/evaluation-scopes.md
+      - Compute Scopes: syntax/compute-scopes.md
+      - Operators and Special Forms:
+          - Overview: syntax/operators-special-forms.md
+          - Assignment Syntax: syntax/operators-special-forms/assignment-syntax.md
+          - Rule Declaration Syntax: syntax/operators-special-forms/rule-declaration-syntax.md
+          - Import and Include Syntax: syntax/operators-special-forms/import-include-syntax.md
+  - Evaluation and Execution:
+      - Overview: evaluation/index.md
+      - Evaluation Scopes:
+          - Overview: evaluation/evaluation-scopes.md
+          - Curly Brace Evaluation: evaluation/evaluation-scopes/curly-brace-evaluation.md
+          - Print and Output: evaluation/evaluation-scopes/print-output.md
+      - Execution Order:
+          - Overview: evaluation/execution-order.md
+          - Statement Execution: evaluation/execution-order/statement-execution.md
+          - Head Dispatch: evaluation/execution-order/head-dispatch.md
+      - Nested Evaluation: evaluation/nested-evaluation.md
+      - Output Formatting:
+          - Overview: evaluation/output-formatting.md
+          - Default Output: evaluation/output-formatting/default-output.md
+          - Raw, Debug, and Token Output: evaluation/output-formatting/raw-debug-token-output.md
+      - Error Reporting: evaluation/error-reporting.md
+      - Debugging Evaluation Behavior:
+          - Overview: evaluation/debugging-evaluation-behavior.md
+          - Event Logs: evaluation/debugging-evaluation-behavior/event-logs.md
+  - Transformations and Repeat:
+      - Overview: transformations/index.md
+      - Repeat:
+          - Repeat Operator:
+              - Overview: transformations/repeat-operator.md
+              - Bounded Repeat: transformations/repeat-operator/bounded-repeat.md
+              - Fixpoint Repeat: transformations/repeat-operator/fixpoint-repeat.md
+          - Expansion Behavior: transformations/expansion-behavior.md
+          - Nested Repeats: transformations/nested-repeats.md
+          - Repeat with Evaluation Scopes: transformations/repeat-with-evaluation-scopes.md
+          - Repeat with Compute Scopes: transformations/repeat-with-compute-scopes.md
+          - Common Repeat Examples: transformations/common-repeat-examples.md
+      - Patterns:
+          - Overview: transformations/patterns.md
+          - Variable Captures: transformations/patterns/variable-captures.md
+          - Match-Any Captures: transformations/patterns/match-any-captures.md
+          - Guards and Selectors: transformations/patterns/guards-and-selectors.md
+      - Transform Rules:
+          - Overview: transformations/transform-rules.md
+          - Basic Transform: transformations/transform-rules/basic-transform.md
+          - Inline Transform: transformations/transform-rules/inline-transform.md
+          - Substitution Transform: transformations/transform-rules/substitution-transform.md
+          - Equivalence Rules: transformations/transform-rules/equivalence-rules.md
+      - Rules in Practice:
+          - Overview: transformations/rules-in-practice.md
+          - Reusable Rule Dispatch: transformations/rules-in-practice/reusable-rule-dispatch.md
+          - Querying Structures with Rules: transformations/rules-in-practice/querying-structures.md
+          - Bidirectional Rewrites: transformations/rules-in-practice/bidirectional-rewrites.md
+          - Ordered Rule Sets: transformations/rules-in-practice/ordered-rule-sets.md
+          - Guarded Rules: transformations/rules-in-practice/guarded-rules.md
+          - Named Rules in Proofs: transformations/rules-in-practice/named-rules-in-proofs.md
+      - Selection:
+          - Overview: transformations/selection.md
+          - Selection Operator: transformations/selection/selection-operator.md
+          - Focus and Match Selectors: transformations/selection/focus-match-selectors.md
+          - State Selection: transformations/selection/state-selection.md
+          - Root Selection: transformations/selection/root-selection.md
+      - Inference:
+          - Overview: transformations/inference.md
+          - Inference Operator: transformations/inference/inference-operator.md
+          - Bounded Search: transformations/inference/bounded-search.md
+          - Witnesses: transformations/inference/witnesses.md
+  - Compute and Operators:
+      - Overview: compute/index.md
+      - Compute Scope:
+          - Overview: compute/compute-scope.md
+          - Supported Reductions: compute/compute-scope/supported-reductions.md
+          - Eval Option: compute/compute-scope/eval-option.md
+      - Integer Arithmetic:
+          - Overview: compute/integer-arithmetic.md
+          - Addition and Multiplication: compute/integer-arithmetic/addition-multiplication.md
+          - Minus and Division: compute/integer-arithmetic/minus-division.md
+      - Float Arithmetic:
+          - Overview: compute/float-arithmetic.md
+          - Basic Floats: compute/float-arithmetic/basic-floats.md
+          - Mixed Numeric Forms: compute/float-arithmetic/mixed-numeric-forms.md
+      - Boolean and Comparison:
+          - Overview: compute/boolean-comparison.md
+          - Boolean Logic: compute/boolean-comparison/boolean-logic.md
+          - Comparison Operators: compute/boolean-comparison/comparison-operators.md
+      - Meta-Compute Operator: compute/meta-compute-operator.md
+      - Imaginary and Quaternion Forms:
+          - Overview: compute/imaginary-quaternion.md
+          - Imaginary Addition: compute/imaginary-quaternion/imaginary-addition.md
+          - Quaternion Products: compute/imaginary-quaternion/quaternion-products.md
+      - Symbolic and Non-Computed Forms: compute/symbolic-non-computed-forms.md
+      - Operator Reference:
+          - Overview: compute/operator-reference.md
+          - Arithmetic Operators: compute/operator-reference/arithmetic-operators.md
+          - Boolean and Comparison Operators: compute/operator-reference/boolean-comparison-operators.md
+          - Structural Operators: compute/operator-reference/structural-operators.md
+  - Working With Data:
+      - Overview: data/index.md
+      - External API Calls: data/external-api-calls.md
+      - Lists and Sequences:
+          - Overview: data/lists-sequences.md
+          - Concatenation: data/lists-sequences/concatenation.md
+          - Ranges: data/lists-sequences/ranges.md
+          - Explode and Implode: data/lists-sequences/explode-implode.md
+      - Variables and Bindings:
+          - Overview: data/variables-bindings.md
+          - Assignment: data/variables-bindings/assignment.md
+          - CLI Set: data/variables-bindings/cli-set.md
+          - Path Access: data/variables-bindings/path-access.md
+      - Local Scopes:
+          - Overview: data/local-scopes.md
+          - Global and Dotted Names: data/local-scopes/global-dotted-names.md
+          - Query Helpers: data/local-scopes/query-helpers.md
+      - Namespaces and Packages:
+          - Overview: data/namespaces-packages.md
+          - Packages and Imports: data/namespaces-packages/packages-imports.md
+          - Include Files: data/namespaces-packages/include-files.md
+      - Selection and Witness Forms:
+          - Overview: data/selection-witness-forms.md
+          - Witness Output: data/selection-witness-forms/witness-output.md
+          - Proof-Oriented Data: data/selection-witness-forms/proof-oriented-data.md
+      - Rendering Structured Output:
+          - Overview: data/rendering-structured-output.md
+          - Format Strings: data/rendering-structured-output/format-strings.md
+          - JSON Loading: data/rendering-structured-output/json-loading.md
+          - JSON Saving: data/rendering-structured-output/json-saving.md
+          - JSON Encoding: data/rendering-structured-output/json-encoding.md
+  - Reference:
+      - Overview: reference/index.md
+      - Command Line:
+          - Overview: reference/command-line.md
+          - Common Options:
+              - Overview: reference/command-line/common-options.md
+              - Input Files and REPL: reference/command-line/common-options/input-files-repl.md
+              - Evaluation and Variables: reference/command-line/common-options/evaluation-variables.md
+              - Output Inspection: reference/command-line/common-options/output-inspection.md
+              - Help Flag: reference/command-line/common-options/help-flag.md
+          - Debugger Options:
+              - Overview: reference/command-line/debugger-options.md
+              - Debugger Modes: reference/command-line/debugger-options/debugger-modes.md
+              - Breakpoint Flags: reference/command-line/debugger-options/breakpoint-flags.md
+              - Postmortem Flag: reference/command-line/debugger-options/postmortem-flag.md
+          - Matcher and Inference Options:
+              - Overview: reference/command-line/matcher-inference-options.md
+              - Dispatch Flags: reference/command-line/matcher-inference-options/dispatch-flags.md
+              - Matcher Controls: reference/command-line/matcher-inference-options/matcher-controls.md
+              - Event Log Flag: reference/command-line/matcher-inference-options/event-log-flag.md
+              - Inference Budget Flags: reference/command-line/matcher-inference-options/inference-budget-flags.md
+      - Example Gallery:
+          - Overview: reference/examples.md
+          - Compute Examples: reference/examples/compute-examples.md
+          - Transform Examples: reference/examples/transform-examples.md
+          - Rule Examples: reference/examples/rule-examples.md
+          - Data Examples: reference/examples/data-examples.md
+      - Test Fixture Guide:
+          - Overview: reference/test-fixture-guide.md
+          - Args Files: reference/test-fixture-guide/args-files.md
+          - Filter and Strict Mode: reference/test-fixture-guide/filter-strict.md
+      - Debugger Guide:
+          - Overview: reference/debugger-guide.md
+          - Breakpoints: reference/debugger-guide/breakpoints.md
+          - Stepping: reference/debugger-guide/stepping.md
+          - Postmortem Debugging: reference/debugger-guide/postmortem.md
+      - Glossary: reference/glossary.md
+      - Language Change Log: reference/language-change-log.md

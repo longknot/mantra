@@ -1,0 +1,45 @@
+import utils;
+
+{ mantra.inference.beam = 5 }
+{ mantra.inference.budget = 8 }
+{ mantra.inference.anchors_per_rule = 2 }
+{ max_steps = 8 }
+
+succ = p ==> + p 1;
+extract_subject = { X -- => Y -- } => all X;
+extract_target = { X -- => Y -- } => all Y;
+ih = + m n : + p => + ( + m : + p ) ( + n : + p );
+
+rule induction_step_hypothesis [
+  induction_step_hypothesis SUCC IH -- => { IH ? SUCC }
+];
+
+rule induction_step_subject [
+  induction_step_subject SUCC IH -- =>
+    { induction_step_hypothesis SUCC IH ? extract_subject }
+];
+
+rule induction_step_target [
+  induction_step_target SUCC IH -- =>
+    { induction_step_hypothesis SUCC IH ? extract_target }
+];
+
+repeat_seq = X -- : + m n => + ( all X : + m ) ( all X : + n );
+flatten = + ( + A -- ) => + all A;
+commute = + M N <=> + N M;
+repeat_rev = + ( Y : + m ) ( Y : + n ) => + ( Y : + m n );
+rules = [ repeat_seq, ih, flatten, commute, repeat_rev ];
+
+ih_1 = ih ? succ;
+{ subject_direct = ih_1 ? extract_subject };
+{ target_direct = ih_1 ? extract_target };
+subject_rule = induction_step_subject succ ih;
+target_rule = induction_step_target succ ih;
+
+{ subject_direct => target_direct ?|= rules : max_steps }
+print { witness.w1.ok };
+print { witness.w1.count };
+
+{ subject_rule => target_rule ?|= rules : max_steps }
+print { witness.w2.ok };
+print { witness.w2.count };

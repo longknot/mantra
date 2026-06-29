@@ -1,0 +1,3 @@
+define select from where ;
+. q = [ [ select x from y where z w ] => [ x ] ] ;
+print { [ choose "name" from persons where "id" 2 ] ? q : 1 }

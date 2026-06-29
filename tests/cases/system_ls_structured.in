@@ -1,0 +1,8 @@
+system ls fs.dir "tests/cases/system_ls_fixture";
+print { fs.dir }
+print { get "fs.dir.handle1.count" }
+print { get "fs.dir.handle1.items[1].name" }
+print { get "fs.dir.handle1.items[1].kind" }
+print { get "fs.dir.handle1.items[1].size" }
+print { get "fs.dir.handle1.items[2].name" }
+print { get "fs.dir.handle1.items[2].kind" }

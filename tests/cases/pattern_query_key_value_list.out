@@ -1,0 +1,3 @@
+[ "dict.obj1.attr.y" -> 2  "dict.obj2.attr.y" -> 5  "dict.obj3.attr.y" -> 8 ]
+[ "dict.obj1.attr.z" -> 3  "dict.obj2.attr.z" -> 6  "dict.obj3.attr.z" -> 9 ]
+[ "dict.obj2.attr.x" -> 4  "dict.obj2.attr.y" -> 5  "dict.obj2.attr.z" -> 6 ]

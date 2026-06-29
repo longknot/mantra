@@ -1,0 +1,8 @@
+rule last [
+  last [ -- x ] => x
+]
+
+print { last [ 1 2 3 ] }
+
+input = [ 4 5 6 ]
+print { last input }

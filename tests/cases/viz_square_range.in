@@ -1,0 +1,4 @@
+import viz;
+
+{ viz.square_range "chart" ( -1.0 .. 1.0 by 0.5 ) };
+{ viz.show "chart" }

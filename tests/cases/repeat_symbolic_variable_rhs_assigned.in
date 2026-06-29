@@ -1,0 +1,8 @@
+s1 = + x : + p;
+s2 = + x : + 2 p 2;
+
+print { s1 };
+print { s2 };
+
+{ p = 3 };
+print { s2 };

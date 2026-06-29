@@ -1,0 +1,12 @@
+dict.y = 0;
+dict.obj1.attr.y = 2;
+dict.obj2.attr.inner.y = 9;
+dict.obj2.kind = "k";
+dict.obj3.z = 3;
+{ assign_path "dict.list[1].name" "a" };
+{ assign_path "dict.list[2].name" "b" };
+
+print { query_children dict }
+print { query_children dict.obj2 }
+print { query_children dict.list }
+print { query_children dict.obj[2].attr }

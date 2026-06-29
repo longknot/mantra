@@ -1,0 +1,3 @@
+flatten = + ( + X ) => + X;
+subject = + ( + m );
+print { subject ? [ flatten ] };

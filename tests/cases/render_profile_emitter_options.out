@@ -1,0 +1,5 @@
+1;repeat_seq;"a;b"
+2;ih;s1
+STEP  RULE        BEFORE
+1     repeat_seq  a;b
+2     ih          s1

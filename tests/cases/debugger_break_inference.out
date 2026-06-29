@@ -1,0 +1,9 @@
+Debugger paused: breakpoint
+Breakpoint hit: inference *step=1*
+Pause reason: breakpoint
+Breakpoints:
+  [0] inference *step=1*
+Debugger Stack:
+  #0 inference-state state | 1 | step=1 | state=0
+  #1 eval | { 1 => 2 |= [ 1 => 2 ] }
+  #2 statement | { 1 => 2 |= [ 1 => 2 ] }

@@ -1,0 +1,11 @@
+import viz;
+
+{ viz.line_xy "chart" "x" "y" };
+{ assign_path "chart.data.values[1].x" -1 };
+{ assign_path "chart.data.values[1].y" 1 };
+{ assign_path "chart.data.values[2].x" 0 };
+{ assign_path "chart.data.values[2].y" 0 };
+{ assign_path "chart.data.values[3].x" 1 };
+{ assign_path "chart.data.values[3].y" 1 };
+
+{ viz.show "chart" }

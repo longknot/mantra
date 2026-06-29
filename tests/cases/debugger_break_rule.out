@@ -1,0 +1,9 @@
+Debugger paused: breakpoint
+Breakpoint hit: rule *ping*
+Pause reason: breakpoint
+Breakpoints:
+  [0] rule *ping*
+Debugger Stack:
+  #0 dispatch main.ping | ping z
+  #1 eval | { ping z }
+  #2 statement | { ping z }

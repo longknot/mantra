@@ -1,0 +1,22 @@
+{
+  "active": true,
+  "disabled": false,
+  "nothing": null,
+  "count": 3,
+  "ratio": 1.25,
+  "name": "Ada\nLovelace",
+  "empty_object": {},
+  "empty_array": [],
+  "items": [
+    {
+      "x": 1,
+      "labels": []
+    },
+    {
+      "x": 2,
+      "meta": {}
+    }
+  ],
+  ".": "dot",
+  "_x2E_": "literal escape text"
+}

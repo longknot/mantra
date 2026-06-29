@@ -1,0 +1,9 @@
+inspect children vars
+inspect children vars dict
+inspect children vars dict.obj1.attr
+inspect value vars dict.obj1.attr.x
+inspect children settings
+inspect children settings mantra
+inspect children settings mantra.inference
+inspect value settings mantra.inference.beam
+quit

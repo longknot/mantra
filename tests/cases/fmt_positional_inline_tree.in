@@ -1,0 +1,1 @@
+print { fmt "sum=%t label=%s" ( + 1 2 ) "ok" }

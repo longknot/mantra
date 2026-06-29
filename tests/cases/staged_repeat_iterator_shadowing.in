@@ -1,0 +1,2 @@
+n = 1;
+print { scope { [ n ] :: 3 @ n } };

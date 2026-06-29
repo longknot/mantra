@@ -1,0 +1,5 @@
+rule json [
+  json "{" X -- "}" => [ "OK" ]
+]
+
+print { json "{" "\"" "key" "\"" ":" "value" "}" }

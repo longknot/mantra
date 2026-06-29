@@ -1,0 +1,5 @@
+rule id [
+  id X => id X
+]
+
+print { id 1 }

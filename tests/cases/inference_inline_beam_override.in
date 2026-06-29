@@ -1,0 +1,2 @@
+mantra.inference.beam = 2
+print { ( + x - x <=> 0 ) => ( + x + ( + - x ) - ( + - x ) <=> + x + 0 ) |= [ x ==>> ( -x ), { U -- <=> V -- } => { + x all U <=> + x all V } ] : 2 }

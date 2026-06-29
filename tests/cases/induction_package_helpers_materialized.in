@@ -1,0 +1,23 @@
+import math;
+
+{ mantra.inference.beam = 5 }
+{ mantra.inference.budget = 8 }
+{ mantra.inference.anchors_per_rule = 2 }
+{ max_steps = 8 }
+
+succ = p ==> + p 1;
+ih = + m n : + p => + ( + m : + p ) ( + n : + p );
+
+repeat_seq = X -- : + m n => + ( all X : + m ) ( all X : + n );
+flatten = + ( + A -- ) => + all A;
+commute = + M N <=> + N M;
+repeat_rev = + ( Y : + m ) ( Y : + n ) => + ( Y : + m n );
+rules = [ repeat_seq, ih, flatten, commute, repeat_rev ];
+
+{ subject = math.induction_step_subject succ ih };
+{ target = math.induction_step_target succ ih };
+{ query = { subject } => { target } };
+
+{ query ?|= rules : max_steps }
+print { witness.w1.ok };
+print { witness.w1.count };

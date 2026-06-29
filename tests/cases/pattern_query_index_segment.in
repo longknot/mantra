@@ -1,0 +1,9 @@
+dict.obj1.attr.x = 10;
+dict.obj2.attr.x = 20;
+dict.obj3.attr.x = 30;
+dict.other.attr.x = 99;
+
+print { dict.obj[1].attr.x }
+print { dict.obj[2].attr.x }
+print { dict.obj[3].attr.x }
+print { dict.obj[4].attr.x }

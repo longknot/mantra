@@ -1,0 +1,8 @@
+doc.name = "Ada";
+{ assign_path "doc.values[1]" 2 };
+{ assign_path "doc.values[2]" 3 };
+json_save doc "__TEMP_DIR__/roundtrip.json";
+json_load "__TEMP_DIR__/roundtrip.json" copy;
+print { copy.name }
+print { get "copy.values[1]" }
+print { get "copy.values[2]" }

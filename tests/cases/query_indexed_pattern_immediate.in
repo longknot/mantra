@@ -1,0 +1,14 @@
+import utils;
+
+dict.obj1.attr.y = 2;
+dict.obj2.attr.inner.y = 9;
+dict.obj2.kind = "k";
+dict.obj3.z = 3;
+
+print { get dict.obj[2].kind }
+print { query_children dict.obj[2].attr }
+print { query_keys dict.obj[2].attr.* }
+print { query_values dict.obj[2].attr.* }
+print { utils.dict_children dict.obj[2].attr }
+print { utils.dict_keys dict.obj[2].attr.* }
+print { utils.dict_values dict.obj[2].attr.* }

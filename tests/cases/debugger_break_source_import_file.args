@@ -1,0 +1,1 @@
+--debugger-cli --break-source=*debugger/sourcebreak/package.m:4 tests/modules/debugger_break_source_import_main.m

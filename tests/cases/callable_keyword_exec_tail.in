@@ -1,0 +1,9 @@
+callable func;
+
+rule runlist [
+  runlist [ X -- ] => runlist { all X },
+  runlist { X, } Y -- => func X runlist [ all Y ],
+  runlist { X, } => func X
+];
+
+print { runlist [ "a", "b", "c" ] }

@@ -1,0 +1,3 @@
+STEP  RULE        DIR      ANCHOR  BEFORE  AFTER
+1     repeat_seq  forward  1       s0      s1
+2     ih          reverse  2       s1      s2

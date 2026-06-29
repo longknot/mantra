@@ -1,0 +1,9 @@
+import math;
+
+define ddx exp x y;
+
+print { ddx x ? [ math.ddx_self ] }
+print { ddx y ? [ math.ddx_self ] }
+print { exp x ? [ math.ddx_self ] }
+print { ddx 0 ? [ math.ddx_zero ] }
+print { ddx 1 ? [ math.ddx_one ] }

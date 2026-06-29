@@ -1,0 +1,6 @@
+Debugger paused: breakpoint
+Breakpoint hit: callable main.ping
+Debugger paused: step
+Debugger Stack:
+  #0 eval | { ping z }
+  #1 statement | { ping z }

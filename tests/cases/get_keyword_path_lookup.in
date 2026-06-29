@@ -1,0 +1,6 @@
+doc.first_name = "John";
+P = "doc.first_name";
+
+print { get doc.first_name }
+print { get $P }
+print { get "doc.first_name" }

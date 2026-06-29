@@ -1,0 +1,7 @@
+Debugger paused: breakpoint
+Breakpoint hit: source debugger_breakpoint_two_statements.m:3
+Pause reason: breakpoint
+Breakpoints:
+  [0] source debugger_breakpoint_two_statements.m:3
+Debugger Stack:
+  #0 statement | { ping b }

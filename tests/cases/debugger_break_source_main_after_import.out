@@ -1,0 +1,7 @@
+Debugger paused: breakpoint
+Breakpoint hit: source *debugger_break_source_main_after_import.m:2
+Pause reason: breakpoint
+Breakpoints:
+  [0] source *debugger_break_source_main_after_import.m:2
+Debugger Stack:
+  #0 statement | { ping local_main }

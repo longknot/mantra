@@ -1,0 +1,10 @@
+P = "dict.obj1.steps[1].after";
+Q = P;
+
+print { path_segment $Q 1 }
+print { path_segment $Q 3 }
+print { path_segment $Q 4 }
+print { path_segment $Q -1 }
+print { path_segment $Q -2 }
+print { path_segment "a.b.c" 2 }
+print { path_segment "a.b.c" 5 }

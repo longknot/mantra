@@ -1,0 +1,8 @@
+rule kv [
+  kv P -- => { $P -> 1 }
+];
+
+P = "ctx";
+
+print { kv "rule" }
+print { { $P -> 1 } }

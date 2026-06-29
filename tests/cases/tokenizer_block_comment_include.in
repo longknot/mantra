@@ -1,0 +1,2 @@
+include "tests/modules/imports/block_comment_inline.m";
+print { b };

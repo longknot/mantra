@@ -1,0 +1,4 @@
+request.url = "__HTTP_BASE__/json";
+system http response request;
+print { response.ok }
+print { response.error.kind }

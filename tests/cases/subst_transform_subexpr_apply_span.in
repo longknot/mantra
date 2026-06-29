@@ -1,0 +1,4 @@
+print { ( + x - x <=> 0 ) ? [ x ==>> ( -x ) ] }
+{ s1 = ( + x - x <=> 0 ) ? [ x ==>> ( -x ) ] }
+print { s1 }
+print { s1 ? [ { U -- <=> V -- } => { + x all U <=> + x all V } ] }

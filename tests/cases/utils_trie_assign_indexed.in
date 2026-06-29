@@ -1,0 +1,13 @@
+import utils;
+
+print { utils.trie_child_path "profiles.simple_rows" kind }
+print { utils.trie_index_path "profiles.simple_rows.columns" 3 }
+
+{ utils.trie_assign_indexed "cols" 1 ( a -> 1 ) };
+{ utils.trie_assign_indexed "cols" 2 ( b -> 2 ) };
+{ utils.trie_assign_indexed "cols" 3 ( c -> 3 ) };
+
+print { query_children "cols" };
+print { get "cols[1]" };
+print { get "cols[2]" };
+print { get "cols[3]" };

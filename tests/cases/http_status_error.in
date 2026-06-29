@@ -1,0 +1,5 @@
+request.url = "__HTTP_BASE__/status/404";
+system http response request;
+print { response.ok }
+print { response.status }
+print { response.body.error }

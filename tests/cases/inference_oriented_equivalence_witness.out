@@ -1,0 +1,5 @@
+"witness.w1"
+1
+[ "witness.w1.steps[1].rule_name" -> "contract" ]
+[ "witness.w1.steps[1].direction" -> "reverse" ]
+[ "witness.w1.steps[1].orientation" -> "explicit" ]

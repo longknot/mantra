@@ -1,0 +1,6 @@
+dict.obj1.a = 1;
+dict.obj2.b = 2;
+
+print { query_children dict };
+print { query_children dict.obj1 };
+print { get "dict.obj1.a" };

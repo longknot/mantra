@@ -1,0 +1,39 @@
+Error: assign_path path must resolve to scalar path text; wrap structured values in (...) or {...}
+Debugger paused: exception
+Debugger commands:
+  help              Show this help
+  breakpoints       List breakpoints
+  break KIND PATTERN
+                    Add breakpoint (KIND = callable|statement|rule|inference|source)
+                    source spec: LINE | FILE:LINE | FILE:LINE:COL
+  delete N          Delete breakpoint N
+  clear             Delete all breakpoints
+  bt                Show debugger stack
+  frame [N]         Show frame details (0 = top frame)
+  events [N]        Show recent debugger events
+  reason            Show current pause reason
+  context           Show current runtime context summary
+  next              Resume until the next statement-level stop
+  step              Resume until the next semantic stop
+  finish            Resume until the current frame exits
+  inspect [MODE]    Emit machine-readable debugger data
+                    inspect
+                    inspect children <vars|settings> [path]
+                    inspect value <vars|settings> [path]
+  postmortem        Show full postmortem report
+  quit              Exit debugger prompt
+Pause reason: exception
+Debugger Stack:
+  #0 dispatch main.fail | fail z
+  #1 eval | { fail z }
+  #2 statement | { fail z }
+Debugger Context:
+  namespace: main
+  rewrite-count: 1
+  dispatch-count: 1
+  selection-count: 0
+  inference-count: 0
+Recent Debugger Events:
+  - dispatch-enter main.fail
+  - rewrite-probe fail X => { assign_path } | direction=forward
+  - exception main.fail | assign_path path must resolve to scalar path text; wrap structured values in (...) or {...}

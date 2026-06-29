@@ -1,0 +1,2 @@
+system cat doc.big "tests/cases/system_command_cat_large.txt";
+print { doc.big }

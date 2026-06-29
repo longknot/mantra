@@ -1,0 +1,5 @@
+dict.obj1.a = 1;
+dict.obj1.b = 2;
+dict.obj2.old = 9;
+dict.obj2 := dict.obj1;
+print { query_values dict.obj2.* }

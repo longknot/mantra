@@ -1,0 +1,1 @@
+--set=mantra.external.http.allowed_hosts="example.test"

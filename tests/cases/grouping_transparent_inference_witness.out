@@ -1,0 +1,2 @@
+"witness.w1"
+[ "witness.w1.steps[1].rule" -> + m : + n => + n : + m ]

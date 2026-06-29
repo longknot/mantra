@@ -1,0 +1,3 @@
+r = + ( + m n ) : + 1;
+printf "raw=%t" r
+printf "eval=%t" { r }

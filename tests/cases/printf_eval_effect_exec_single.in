@@ -1,0 +1,3 @@
+mantra.effects.display.evaluate = 1
+{ exec printf "exec %d" [ 7 ] }
+print "done"

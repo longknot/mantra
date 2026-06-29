@@ -1,0 +1,4 @@
+EVENT[trace] rewrite applied
+EVENT[trace] inference step=1 state=0 candidate applied rule="1 => 2" direction=forward
+EVENT[trace] inference target reached at step=1 via state=0
+1

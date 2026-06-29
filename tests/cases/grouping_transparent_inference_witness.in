@@ -1,0 +1,4 @@
+ih = << + m : + n >> => << + n : + m >>;
+
+print { << + m : + n >> => << + n : + m >> ?|= [ ih ] : 1 };
+print { witness.w1.steps[1].rule };

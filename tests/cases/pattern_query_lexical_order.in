@@ -1,0 +1,5 @@
+dict.k3 = 30;
+dict.k1 = 10;
+dict.k2 = 20;
+
+print { dict.* }

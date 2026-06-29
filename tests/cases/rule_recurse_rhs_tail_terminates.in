@@ -1,0 +1,4 @@
+rule recurse {
+  recurse x -- => [ x , recurse rhs x ]
+}
+print { recurse 1 2 3 }

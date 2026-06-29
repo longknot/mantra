@@ -1,0 +1,1 @@
+print { - selector first [ 1 ] ? [ [ x ] => 10, [ x ] => 20 ] }

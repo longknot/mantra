@@ -1,0 +1,6 @@
+print { ~ sin 0 }
+print { ~ cos 0 }
+print { ~ tan 0 }
+print { ~ sqrt 4 }
+print { ~ exp 0 }
+print { ~ ln 1 }

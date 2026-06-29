@@ -1,0 +1,4 @@
+"dict.list" "dict.obj1" "dict.obj2" "dict.obj3" "dict.y"
+"dict.obj2.attr" "dict.obj2.kind"
+"dict.list[1]" "dict.list[2]"
+"dict.obj2.attr.inner"

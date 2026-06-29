@@ -1,0 +1,5 @@
+print { "b" ? [ "a" .. "z" => [ ok ] ] }
+print { "B" ? [ "a" .. "z" => [ ok ] ] }
+print { 2 ? [ 1 .. 3 => [ ok ] ] }
+print { 4 ? [ 1 .. 3 => [ ok ] ] }
+print { "y" ? [ "z" .. "x" => [ ok ] ] }

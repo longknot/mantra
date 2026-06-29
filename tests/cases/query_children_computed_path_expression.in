@@ -1,0 +1,3 @@
+{ x.a = 1 }
+{ x.b = 2 }
+print { [ query_children { fmt "%s" [ "x" ] } ] }

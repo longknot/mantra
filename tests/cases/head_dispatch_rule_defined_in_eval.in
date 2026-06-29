@@ -1,0 +1,1 @@
+print { rule foo [ foo x y => ( x y ) ] [ foo 1 2 ] }

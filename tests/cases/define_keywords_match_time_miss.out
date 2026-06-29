@@ -1,0 +1,1 @@
+[ choose "name" from persons where "id" 2 ]

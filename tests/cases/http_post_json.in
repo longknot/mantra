@@ -1,0 +1,11 @@
+request.method = "POST";
+request.url = "__HTTP_BASE__/echo";
+request.body.name = "sample";
+request.body.count = 3;
+system http response request;
+print { response.ok }
+print { response.status }
+print { response.body.method }
+print { get "response.body.content_x5F_type" }
+print { response.body.body.name }
+print { response.body.body.count }

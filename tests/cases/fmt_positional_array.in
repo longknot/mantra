@@ -1,0 +1,1 @@
+print { fmt "alpha %s beta %d gamma %q delta %f %% omega" [ "x" 7 "z" 7.5 ] }

@@ -1,0 +1,30 @@
+. persons = [
+  [ "name" "John Doe",
+    "address" [
+      "street" "123 Main St",
+      "city" "Anytown",
+      "country" "USA"
+    ]
+  ],
+  [ "name" "Jane Smith",
+    "address" [
+      "street" "456 Elm St",
+      "city" "Othertown",
+      "country" "USA"
+    ]
+  ]
+]
+
+. extract_person = [
+  [ "name" "Jane Smith", -- ] =>> $match
+]
+
+. extract_address = [
+  "address" =>> rhs $match
+]
+
+. extract_street = [
+  "street" =>> rhs $match
+]
+
+print { persons ? extract_person ? extract_address ? extract_street }

@@ -1,0 +1,5 @@
+"witness.w1"
+1
+2
+[ "witness.w1.steps[1].rule_name" -> "repeat_seq" ]
+[ "witness.w1.steps[2].rule_name" -> "ih" ]

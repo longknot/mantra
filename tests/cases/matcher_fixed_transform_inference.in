@@ -1,0 +1,24 @@
+{ mantra.inference.budget = 4 }
+
+schema = + x => + y;
+fixed_atom = + x \ => + y;
+
+print { + a => + y |= [ schema ] : 1 };
+print { + a => + y |= [ fixed_atom ] : 1 };
+print { + x => + y |= [ fixed_atom ] : 1 };
+
+fixed_ih = << + m : + n >> \ <=> << + n : + m >>;
+proposition = << + m : + n >> <=> << + n : + m >>;
+fixed_ih_alias = \ proposition;
+
+print { << + m : + n >> => << + n : + m >> |= [ fixed_ih ] : 1 };
+print { << + 1 : + n >> => << + n : + 1 >> |= [ fixed_ih ] : 1 };
+print { + ( + m : + n ) ( + 1 ) => + ( + n : + m ) ( + 1 ) |= [ fixed_ih ] : 1 };
+print { << + m : + n >> => << + n : + m >> |= [ fixed_ih_alias ] : 1 };
+print { << + 1 : + n >> => << + n : + 1 >> |= [ fixed_ih_alias ] : 1 };
+
+fixed_onerepeat = << + 1 : + n >> \ <=> << + n >>;
+schema_onerepeat = << + 1 : + n >> <=> << + n >>;
+
+print { << + 1 : + n 1 >> => << + n 1 >> |= [ fixed_onerepeat ] : 1 };
+print { << + 1 : + n 1 >> => << + n 1 >> |= [ schema_onerepeat ] : 1 };

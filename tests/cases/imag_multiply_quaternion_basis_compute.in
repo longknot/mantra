@@ -1,0 +1,6 @@
+print ~ { * 2i 3j }
+print ~ { * 2j 3i }
+print ~ { * 2j 3k }
+print ~ { * 2k 3j }
+print ~ { * 2k 3i }
+print ~ { * 2i 3k }

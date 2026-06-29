@@ -1,0 +1,4 @@
+define select from where ;
+people = [ [ "id" 1 "name" "John Doe" ] [ "id" 2 "name" "Jane Smith" ] ] ;
+rule select [ select field from table where key val => ( table ? [ [ key val field out -- ] =>> out ] ) ] ;
+print { select "name" from people where "id" 2 }

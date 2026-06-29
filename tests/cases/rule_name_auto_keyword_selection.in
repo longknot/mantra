@@ -1,0 +1,2 @@
+rule only [ only x => x ]
+print { [ foo 1 ] ? only : 1 }

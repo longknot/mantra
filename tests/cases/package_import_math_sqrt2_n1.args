@@ -1,0 +1,1 @@
+tests/modules/pkg_main_import_math_sqrt2.m --set n=1

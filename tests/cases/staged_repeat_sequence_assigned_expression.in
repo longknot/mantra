@@ -1,0 +1,2 @@
+values = ( a b c );
+print { [ x ] :: values @ x }

@@ -1,0 +1,7 @@
+contract = 1 <=> 2;
+
+print { 2 => 1 ?|= [ reverse contract ] };
+print { witness.w1.ok };
+print { witness.w1.steps[1].rule_name };
+print { witness.w1.steps[1].direction };
+print { witness.w1.steps[1].orientation };

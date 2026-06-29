@@ -1,0 +1,3 @@
+H = exec system cat doc.raw "tests/cases/system_command_cat_basic.txt";
+print { H }
+print { doc.raw }

@@ -1,0 +1,6 @@
+request.url = "__HTTP_BASE__/slow";
+request.timeout_ms = 25;
+system http response request;
+print { response.ok }
+print { response.status }
+print { response.error.kind }

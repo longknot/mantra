@@ -1,0 +1,5 @@
+rule process [
+  process ' X , Y --' => target
+];
+
+print { process 1 , 2 , 3 }

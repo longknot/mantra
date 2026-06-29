@@ -1,0 +1,6 @@
+import math;
+
+succ = p ==> + p 1;
+ih = + m n : + p => + ( + m : + p ) ( + n : + p );
+
+print { math.induction.induction_step_hypothesis succ ih };

@@ -1,0 +1,6 @@
+request.url = "__HTTP_BASE__/redirect-cross-origin";
+request.follow_redirects = true;
+system http response request;
+print { response.ok }
+print { response.status }
+print { response.error.kind }

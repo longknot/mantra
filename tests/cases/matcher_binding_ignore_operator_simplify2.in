@@ -1,0 +1,7 @@
+simplify = [
+  * x / x => + 1
+];
+
+input = * x / x;
+
+print { input ? simplify };

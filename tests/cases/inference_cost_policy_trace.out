@@ -1,0 +1,16 @@
+EVENT[trace] rewrite applied
+EVENT[trace] inference step=1 state=0 candidate applied rule="1 => [ 4 , 5 ]" direction=forward
+EVENT[trace] inference step=1 state=0 candidate score=4 growth=4 nodes=5 policy=cost
+EVENT[trace] rewrite applied
+EVENT[trace] inference step=1 state=0 candidate applied rule="1 => 2" direction=forward
+EVENT[trace] inference step=1 state=0 candidate score=0 growth=0 nodes=1 policy=cost
+EVENT[trace] rule did not match subject
+EVENT[trace] inference step=1 state=0 candidate admitted score=0 policy=cost
+EVENT[trace] inference step=1 state=0 candidate pruned reason=beam score=4 policy=cost
+EVENT[trace] rule did not match subject
+EVENT[trace] rule did not match subject
+EVENT[trace] rewrite applied
+EVENT[trace] inference step=2 state=1 candidate applied rule="2 => 3" direction=forward
+EVENT[trace] inference step=2 state=1 candidate score=0 growth=0 nodes=1 policy=cost
+EVENT[trace] inference target reached at step=2 via state=1
+1

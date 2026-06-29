@@ -1,0 +1,7 @@
+first.url = "__HTTP_BASE__/json";
+system http response first;
+second.url = "__HTTP_BASE__/text";
+system http response second;
+print { response.ok }
+print { response.bodyText }
+print { response.body.message }

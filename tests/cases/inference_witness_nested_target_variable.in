@@ -1,0 +1,12 @@
+import math;
+{ mantra.inference.beam = 64 }
+{ mantra.inference.budget = 4 }
+
+{ max_steps = 6 }
+
+{ addinv_x = math.addinv ? [ M ==> x ] }
+{ addinvinv_x = math.addinvinv ? [ m ==> x ] }
+
+{ rules = [ math.negate, math.unfold, math.addzero, math.addinv, math.addlr ] }
+print { addinv_x => addinvinv_x ?|= rules : max_steps }
+print { $witness.w1.ok }

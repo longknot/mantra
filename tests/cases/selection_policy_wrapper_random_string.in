@@ -1,0 +1,1 @@
+print { selector "random" [ 1 ] ? [ [ 2 ] => 20, [ x ] => 10 ] }

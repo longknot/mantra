@@ -1,0 +1,4 @@
+json_load "tests/cases/json_load_escape_keys.json" doc;
+print { doc.a_x2E_b.x_x5B_y_x5D_ }
+print { doc.a_x2E_b.q_x3F_ }
+print { doc.a_x2E_b.m_x2A_n }

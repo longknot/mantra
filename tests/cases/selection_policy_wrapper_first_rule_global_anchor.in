@@ -1,0 +1,2 @@
+print { selector first ( x ) ? [ a => b, A -- => c ] }
+print { selector firstrule ( x ) ? [ a => b, A -- => c ] }

@@ -1,0 +1,7 @@
+# key=value fixture used by test-trie.lpr wildcard pattern tests
+x.a.y.b=1
+x.c.y.d=2
+x.c.z.d=3
+x.a.y.e=4
+q.a.y.b=5
+q.a.t.b=6

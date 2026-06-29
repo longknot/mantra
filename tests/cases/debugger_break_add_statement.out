@@ -1,0 +1,11 @@
+Debugger paused: breakpoint
+Breakpoint hit: callable main.ping
+Added breakpoint: [1] statement { ping b }
+Deleted breakpoint 0
+Debugger paused: breakpoint
+Breakpoint hit: statement { ping b }
+Pause reason: breakpoint
+Breakpoints:
+  [0] statement { ping b }
+Debugger Stack:
+  #0 statement | { ping b }

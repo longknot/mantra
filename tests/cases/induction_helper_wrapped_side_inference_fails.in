@@ -1,0 +1,24 @@
+{ max_steps = 8 }
+
+induction_succ = p ==> + p 1;
+
+rule induction_step_subject [
+  induction_step_subject X -- => { X ? induction_succ }
+];
+
+subject0 = + m n : + p;
+target0 = + ( + m : + p ) ( + n : + p );
+ih = + m n : + p => + ( + m : + p ) ( + n : + p );
+
+subject_direct = { subject0 ? [ p ==> + p 1 ] };
+subject_helper = { induction_step_subject subject0 };
+target_direct = { target0 ? [ p ==> + p 1 ] };
+
+print { subject_direct };
+print { subject_helper };
+
+{ subject_direct => target_direct ?|= [ ih ] : max_steps }
+print { witness.w1.ok };
+
+{ subject_helper => target_direct ?|= [ ih ] : max_steps }
+print { witness.w2.ok };

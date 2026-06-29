@@ -1,0 +1,7 @@
+# key=value fixture used by test-trie.lpr prefix-scan tests
+user:1.name=101
+user:1.email=102
+user:2.name=201
+user:2.email=202
+order:7.total=701
+order:8.total=801

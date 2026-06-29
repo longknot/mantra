@@ -1,0 +1,2 @@
+printf { fmt "alpha %s beta %d" [ "x" 7 ] }
+printf "raw %s" [ "text" ]

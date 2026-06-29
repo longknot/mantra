@@ -1,0 +1,17 @@
+Error: assign_path path must resolve to scalar path text; wrap structured values in (...) or {...}
+Debugger Postmortem
+Pause reason: exception
+
+Debugger Stack:
+  #0 dispatch main.fail | fail z
+  #1 eval | { fail z }
+  #2 statement | { fail z }
+
+Recent Debugger Events:
+  - statement-enter
+  - statement-exit
+  - statement-enter
+  - eval-enter
+  - dispatch-enter main.fail
+  - rewrite-probe fail X => { assign_path } | direction=forward
+  - exception main.fail | assign_path path must resolve to scalar path text; wrap structured values in (...) or {...}

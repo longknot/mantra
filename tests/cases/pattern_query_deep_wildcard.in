@@ -1,0 +1,6 @@
+dict.y = 0;
+dict.obj1.attr.y = 2;
+dict.obj2.attr.inner.y = 9;
+dict.obj3.z = 3;
+
+print { dict.**.y }

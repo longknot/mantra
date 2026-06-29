@@ -1,0 +1,3 @@
+r = target => { + n : + m 1 };
+
+print { target ? [ r ] };

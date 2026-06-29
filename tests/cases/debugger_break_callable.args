@@ -1,0 +1,1 @@
+--debugger-cli --break-callable=main.ping tests/modules/debugger_breakpoint_ping.m

@@ -1,0 +1,27 @@
+Debugger paused: breakpoint
+Breakpoint hit: source debugger_breakpoint_two_statements.m:2
+Debugger paused: step
+@inspect	begin
+@inspect	pause	reason	step
+@inspect	pause	message	eval-enter
+@inspect	pause	source-path	__ROOT_DIR__/tests/modules/debugger_breakpoint_two_statements.m
+@inspect	pause	source-line	2
+@inspect	pause	source-col	1
+@inspect	frame	present	1
+@inspect	frame	kind	eval
+@inspect	frame	summary	{ ping a }
+@inspect	frame	node-index	9
+@inspect	context	present	1
+@inspect	context	namespace	main
+@inspect	context	rewrite-count	0
+@inspect	context	dispatch-count	0
+@inspect	context	selection-count	0
+@inspect	context	inference-count	0
+@inspect	vars	count	0
+@inspect	settings	count	0
+@inspect	events	count	4
+@inspect	event	statement-enter
+@inspect	event	statement-exit
+@inspect	event	statement-enter
+@inspect	event	eval-enter
+@inspect	end

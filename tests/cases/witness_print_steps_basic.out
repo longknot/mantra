@@ -1,0 +1,1 @@
+step 1 | rule=commute | dir=forward | anchor=1 | [ + 1 + 2 ] => [ + 2 + 1 ]

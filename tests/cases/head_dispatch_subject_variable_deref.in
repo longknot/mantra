@@ -1,0 +1,7 @@
+rule first [
+  first [ x -- ] => x
+]
+
+print { first [ 1 2 3 ] }
+input = [ 1 2 3 ]
+print { first input }

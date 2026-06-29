@@ -1,0 +1,13 @@
+dict.obj1.attr.x = 1;
+dict.obj1.attr.y = 2;
+dict.obj1.attr.z = 3;
+dict.obj2.attr.x = 4;
+dict.obj2.attr.y = 5;
+dict.obj2.attr.z = 6;
+dict.obj3.attr.x = 7;
+dict.obj3.attr.y = 8;
+dict.obj3.attr.z = 9;
+
+print { dict.*.attr.y }
+print { dict.obj*.attr.z }
+print { dict.obj2.attr.* }

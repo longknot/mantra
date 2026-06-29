@@ -1,0 +1,7 @@
+rule f [
+  f x => x
+];
+
+alias g = f;
+
+print { g 7 };

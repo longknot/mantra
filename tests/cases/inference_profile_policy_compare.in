@@ -1,0 +1,12 @@
+{ mantra.inference.beam = 1 }
+{ mantra.inference.profile = true }
+
+expand = 1 => [ 4, 5 ];
+toward = 1 => 2;
+finish = 2 => 3;
+
+print { 1 => 3 |= [ expand, toward, finish ] : 2 };
+
+{ mantra.inference.policy = "cost" }
+
+print { 1 => 3 |= [ expand, toward, finish ] : 2 };

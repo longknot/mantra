@@ -1,0 +1,2 @@
+x = nan;
+print { json_encode x }
