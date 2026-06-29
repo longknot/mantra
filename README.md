@@ -1,6 +1,8 @@
 # Mantra
-![image](manual/assets/mantra-frog.png)
 
+<p align="center">
+  <img src="manual/assets/mantra-frog.png" width="540px">
+</p>
 
 **An experimental tree-first programming language for structural rewriting,
 symbolic computation, and bounded inference.**
