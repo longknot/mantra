@@ -20,6 +20,7 @@
 
 # Local/editor state
 .DS_Store
+*:Zone.Identifier
 *.bak
 *.swp
 *~
