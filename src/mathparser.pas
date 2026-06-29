@@ -2,69 +2,6 @@ unit mathparser;
 
 {$I mantra.inc}
 
-(*
------------------------------------------
-0..255:
-IDENTIFIER
-CONSTANT
-INTEGER
-STRING
-TRANSFORM
-PATTERN
-ARRAY
-EXPRESSION
-EVALUATION
-DEEVALUATION
-STATEMENT
-OUTPUT
-REPEAT
---> look up class / object
-
-TOKEN              : 4 bytes    -> object
-[PREV, LHS, RHS]   : 12 bytes
-= 16 bytes
-
-Tree.Next[Index]  --> initialize object from record
-------
-8 + 4 + 6 = 18
-----------------------------------------
-*)
-
-
-
-// "Yet, in fact, as I shall show here with very good reasons, the properties of
-//  the numbers known today have been mostly discovered by observation, and
-//  discovered long before their truth has been confirmed by rigid demonstrations"
-// "in the theory of numbers, which is still very imperfect, we can place our
-//  highest hopes in observations, they will lead us continually to new properties
-//  which we shall endeavor to prove afterwards"
-// -- Leonhard Euler
-//
-// "20% of mathematics is trivial, the rest is abuse of notation."
-// -- Hans-Bernhard Broeker
-
-// discovery of new properties:
-// 1. generate (computable) expressions
-// 2. compute integer sequences from expressions
-// 3. two matching sequences form a hypothesis
-// 4. search for a proof (transformations + proof by induction)
-
-// Array algorithm
-// - cumulative sum/product ... [rfold/lfold]
-// - merge + merge sort
-// - infinite fractions
-// - determinant (?)
-// - window algorithms (?)
-
-// matrix determinant
-//   det M = det LU = det L * det U
-//   http://paulbourke.net/miscellaneous/determinant/
-// matrix inverse
-//   inv(A) = 1/det(A) * adj(A)
-//   - The adjoint matrix is the transpose of the cofactor matrix.
-// https://en.wikipedia.org/wiki/Minor_(linear_algebra)
-// https://en.wikipedia.org/wiki/Exterior_algebra
-
 interface
 
 uses
@@ -92,7 +29,6 @@ type
   TExpression = class(TCustomExpression)
   private
   public
-    //procedure AddToken(const Token: TTokenData); override;
     function GetTokenizer: TCustomTokenizer; override;
   end;
 
@@ -100,11 +36,8 @@ type
   TExpressionTree = class(TCustomTree)
   private
     FStatements: TIntegerDynArray;
-    //procedure ConnectChild(Index, AChild: Integer);
-    //procedure ConnectSibling(Index, ANext: Integer);
     function PrintNodes(Index: Integer; Data: Pointer): Integer;
   protected
-    // procedure InitializeNode(var ANode: TTreeNode); override;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -522,183 +455,6 @@ begin
   AddTransition('assign_path', TK_ASSIGN_PATH);
 
   PostprocessTransitions;
-
-(*
-  WriteLn(Advance(0, 'cos'));
-  WriteLn(Advance(0, 'cosh'));
-  AddTransition('co', 1234);
-  AddTransition('cost', 12345);
-  WriteLn(Advance(0, 'cos'));
-  WriteLn(Advance(0, 'cosh'));
-  WriteLn(Advance(0, 'co'));
-  WriteLn(Advance(0, 'cost'));
-*)
-
-
-  (*
-  S := TokenFromID(TK_SIN);
-
-  X := Advance(0, 'sin');
-  Y := Advance(0, 'sinh');
-*)
-
-  // %X, $X, #X, ^X, ~X, @X, ?X, !X, |X|
-  // STREAM READ / WRITE OPERATIONS
-  // READ(X, Offset, Count, Skip);
-  //   Result := X[Offset..Offset+Count-1]
-  //   Current(X) := Current(X) + Skip
-
-  // =>, <=, ->, <-, |>, <|, |->, <-|
-  // + _ _    -> _
-  // Q: [1 2 3]
-  // + _ _ _  -> _
-  // + %1 %2  => _
-  // + %1 _   => %1 _
-  // "rewrite rules"
-
-
-  // 1: match from input (LHS)
-  // 2: rewrite matching expression - build output expression (RHS)
-  // (2.5: inline replacements of existing symbolic expressions?)
-  // 3: evaluate at evaluation points
-  // _ _  =>  / _ ( + _ ... )
-  // _:2  =>  / _ ( + _ ... )
-  // _  =>  + _ (...)
-  // _  =>  + _ . (...)           // evaluate at '.' position
-  // _  =>  + _ , (...)           // evaluate at ',' position
-
-  // _ _  =>  _ . / ( + _ ... )
-  // [1 2 3 4 5] => [1 . / ( + 2 3 . / ( + 4 5 . ) ) ) ]
-  // EVAL: [ 1, 1/(+2 3), 1/(+2 3/(+ 4 5)) ]
-
-  // _ _  =>  / _  ( + _ ... )
-  // [1 2 3 4 5] => [/ 1 ( + 2 / 3 ( + 4 5 ) ) ) ]
-
-  // _ _  =>  _ . / ( _ + ... )
-  // [1 2 3 4 5] => [1 . / ( 2 + 3 . / ( 4 + 5 . ) ) ) ]
-
-  // _ => + _ (...)
-
-
-  // inner recursion (... is replaced by current input)
-  // + 1 (...),   + 1 ( + 2 (...) ),  + 1 ( + 2 ( + 3 (...) ) )
-
-  // outer recursion (... is replaced by current output)
-  // Q: use different symbol? e.g. _ => + _ (~)
-  // + 1 (...),   + 2 ( + 1 ), + 3 ( + 2 ( + 1 ) )
-
-  // rewrite, fold, recursion, transform, expand, ...
-
-  // combine inner + outer ???
-  // X^ < Y^ ? { X => _ ... | Y => _ ... } * [X Y]
-  // conditional rule selection -> CFDG ?
-  // COMBINE LISTS: * X Y
-  // QUERY ? * X Y
-
-  // @_  = index ?
-  // #_  = index ?
-
-
-  // X = +X  --> associate "operator" with quantity (?)
-
-  // _ _  =>  / _  ( + _ { ... } )
-  // _ _  =>  / _  ( _ { ... } )
-  // _ _  =>  / _  ( _ {} )
-  // [1 2 3 4 5] => / 1 ( + 2),  / 1 ( + 2 / ( + 3 / (+ 4))), / 1 ( + 2 / ( + 3 / ))
-
-  // -> 1/2, 1/(2 + 3/4), 1/(2 + 3/(4 + 5/6))
-  // -> 1/1, 1/(1 + 1), 1/(1 + 1/(1 + 1)), 1/(1 + 1/(1 + 1/(1 + 1)))
-
-  // combine (operator, quantity) => easier pattern matching (!!!)
-
-  // merge in haskell:
-  // merge []         ys                   = ys
-  // merge xs         []                   = xs
-  // merge xs@(x:xt) ys@(y:yt) | x <= y    = x : merge xt ys
-  //                           | otherwise = y : merge xs yt
-
-  // CONTINUED FRACTIONS
-  // Pi:
-  // Pi/2 = 2/1 * 2/3 * 4/3 * 4/5 * 6/5 * 6/7
-  // * (/ _ _) { ... }
-  // 1/2 * 3/4 * 5/6 * 7/8 * 9/10
-
-  // x in X -> /( * x ( / (+ x 1)) { ... } )
-  // 1..100 | x ->
-  // / (* 1 (/2) { /(* 2 (/3) { /(* 3 (/4) { ... } ) } ) } )
-  // Q: how to evaluate (?)
-  // Q: reuse previous computations?
-
-  // golden ratio:
-  // + 1 ( / {} )
-
-  // exp (1):
-  // + x (frac x {})
-  // + 1 (frac 1 {+ 2 (frac 2 {+ 3 (frac 3 {+ 4 (frac 4 {})})})})
-  // f = 1 + 1/(2 + 2/(3 + 3/ ... ))
-  // e = +2 (/ f)
-
-  // 0:10:10 -> 10x10 matrix (zeroes)
-  // x[0]
-  // stream operations
-  // x$0  -> advance 0 steps
-  // /( frac x$0 (+ x 1) { ... } )
-
-  // ------------------------------------------------------------------------
-  // merge
-  // X, Y -> X$0 < Y$0 ? [X Y] {}
-
-  // defining a function:
-  // G x -> + x 1
-  //
-  // defining an axiom:
-  // A ::   + x:n      <=>  * x n
-  // B ::   + x (- x)  <=>  0
-
-  // $ = stream index (relative to current position)
-  // @ = absolute index
-
-
-  // - multiple inputs (?)
-  // - reusing inputs (?)
-  // - advancing inputs (?)
-
-  // X:N  =  repeat X N times
-  // 5?X  =  get 5th item
-  // X ? [ FALSE, TRUE ]
-  // X|5
-  // x
-  // frac x y  <=>  * x ( / y )
-  // X[1 2 3]   = extract item from indices
-
-
-
-  // SEQUENCE OF INTEGERS
-  // 1..N
-
-  // SEQUENCE OF ODD INTEGERS ???
-  // 1 { + 2 ... }:N
-  // 1 { +
-
-
-  // ===========================================================================
-  // 2018-03-12:
-  // mulinv: * m (/ m)   ==   1
-  // addinv: + m (- m)   ==   0
-  // _ _ -> x y => * x (/ y)
-  // _ => / ( _ {} )
-  // [1 1 1 1 1]  =>  /(1),  /(1 /(1)), /(1 /(1 /(1)))
-  // [1 2 3 4 5]  =>  /(1),  /(1 /(2)), /(1 /(2 /(3))),  /(1 /(2 /(3 /(4))))
-
-  // CUMSUM ::  _ => _ {}
-  // SUM ::     _ => _ ...
-  //
-
-  // let your genius be
-  // certified by sanity + (financed/sanctioned/supported/endorsed)
-  // let's go to a nation of exaltation where we can even begin to shine
-  // let your genius be certified by science and sanctioned by God.
-
 end;
 
 constructor TExpressionTokenizer.Create;
@@ -707,67 +463,6 @@ begin
   RegisterTokens;
 end;
 
-(*
-
-GRAMMAR
-=======
-
-Array:
-'[' (Array | Expression | Transform):* ']'
-
-Evaluation:
-'{' Expression | Transform '}'
-
-Transform:
-Expression '=>' Expression
-
-Subtree:
-'(' Expression ')'
-
-Expression:
-(Operator | Identifier | Subtree | Evaluation ):*
-
-Assignment:
-TK_VARIABLE '=' Expression
-
-Statement:
-Evaluation | Expression | Assignment ...
-
-Main:
-(Statement):*
-// definitions/declarations/functions ?
-
-{ _ => + _ {} } [ 1 2 3 4 5 ]
-
-
-*)
-
-(*
-function TExpressionTree.AddStatement: Integer;
-var
-  L: Integer;
-begin
-  Result := AllocateNode;
-  //Node[Result].Initialize;
-
-  L := Length(FStatements);
-  SetLength(FStatements, L + 1);
-  FStatements[L] := Result;
-end;
-
-procedure TExpressionTree.ConnectChild(Index, AChild: Integer);
-begin
-  Node[Index]^.Child := AChild;
-  Node[AChild]^.Prev := Index;
-end;
-
-procedure TExpressionTree.ConnectSibling(Index, ANext: Integer);
-begin
-  Node[Index]^.Next := ANext;
-  Node[ANext]^.Prev := Index;
-end;
-*)
-
 
 { TExpressionTree }
 function TExpressionTree.Parse(AExpression: TCustomExpression): PTreeNode;
@@ -775,8 +470,6 @@ var
   X: PTokenInfo;
   T: Integer;
   ComputeScope, FixedScope: Boolean;
-
-  //function ParseExpression(Index: Integer; ScopeID: Integer = 0): Boolean; forward;
 
   function ParseExpression(
     Index: Integer;
@@ -795,11 +488,8 @@ var
       if T <> -1 then
       begin
         Result := AllocateNode;
-        //PEvaluationNode(Node[Result])^.Initialize;
         TEvaluationNode.InitTreeNode(Result);
-        //! Node[Result]^.ID := 0;
         Node[Result]^.Ref := T;
-        //Expression.Token[T]^.ID := Expression.Token[T]^.ID or Op;
         ParseExpression(Result, ScopeID);
         Expression.Expect(TK_CURLY_END);
       end;
@@ -812,10 +502,8 @@ var
       if T <> -1 then
       begin
         Result := AllocateNode;
-        //PExpressionNode(Node[Result])^.Initialize;
         TExpressionNode.InitTreeNode(Result);
         Node[Result]^.Ref := T;
-        //Expression.Token[T]^.ID := Expression.Token[T]^.ID or Op;
         ParseExpression(Result, ScopeID);
         Expression.Expect(TK_PARENTHESIS_END);
       end;
@@ -828,10 +516,8 @@ var
       if T <> -1 then
       begin
         Result := AllocateNode;
-        //PArrayNode(Node[Result])^.Initialize;
         TArrayNode.InitTreeNode(Result);
         Node[Result]^.Ref := T;
-        //Expression.Token[T]^.ID := Expression.Token[T]^.ID or Op;
         ParseExpression(Result, ScopeID);
         Expression.Expect(TK_BRACKET_END);
       end;
@@ -939,24 +625,6 @@ var
       end;
     end;
 
-
-  (*
-  function ParseString: Integer;
-  begin
-    Result := EOT;
-    T := Expression.Accept(TK_QUOTATIONMARK);
-    if T <> -1 then
-    begin
-      Result := AllocateNode;
-      PStringNode(Node[Result])^.Initialize;
-      Node[Result]^.Token := T;
-      //ParseExpression(Result);
-      Expression.Expect(TK_QUOTATIONMARK);
-    end;
-  end;
-  *)
-
-
     function AddNode(ID: Integer): Boolean;
     var
       L, T: Integer;
@@ -971,7 +639,6 @@ var
 
         T := Node[ID]^.Ref;
         Node[ID]^.Data := Node[ID]^.Data or Op or Meta or Extra;
-        //WriteLn('ID = ', ID, ', Op = ', Node[ID]^.Op);
 
         if T >= 0 then
           Expression.Token[T]^.ID := Expression.Token[T]^.ID or Op or Meta or Extra or ScopeID;
@@ -2211,55 +1878,7 @@ var
 begin
   Exp := TExpression.Create;
   try
-    //Tokenizer.Tokenize('abc >= X', Exp);
-    //Tokenizer.Tokenize('and', Exp);
-    //Tokenizer.Tokenize('a', Exp);
-
     Tokenizer.Tokenize('[{ _ => + _ ( + x  y ) {} }] [ [ + 1 2 3 ][ 4 5 6 ] ]', Exp);
-
-    // composite operation
-    // [1 2 3]^[4 5 6] -> [[(1 4) (1 5) (1 6)][(2 4) (2 5) (2 6)][(3 4) (3 5) (3 6)]
-
-    // concatenation
-    // [1 2 3].[4 5 6] -> [1 2 3 4 5 6]
-
-    // repeat + interpolation
-    // [1 2 3]::[4 5 6]
-
-
-    // { A as a, B as b => transform } [A B]
-    // { {x x}::xs, y::ys => x x y {} }
-
-    // evaluate will generate new tree / expression
-
-    // reductions:
-    // - multiply inputs?
-    // - reduce specific dimensions ???
-    // - BFS/DFS/rfold/lfold
-
-    // reduce applied to lists ?
-    // [ [ [ x y z ] [ a b c ] ] [ q w e ] ]   =>   [ [ xyz abc ] qwe ]
-
-    // matrix inverse
-    // A ^ (inv A) = Identity
-    // C = A * B
-    // c_ij = a_i1 * b_1j + ... + a_im * b_mj = sum (k = 1..m) a_ik * b_kj
-
-    // [2] * [2] => [4]
-    // multiply *all* values
-    // A = [ [ 1 2 ]
-    //       [ 3 4 ] ]
-    // B = [ [ 5 6 ]
-    //       [ 7 8 ] ]
-    // C = [ [ (1 * 5) + (2 * 7)   (3 * 5) + (4 * 7) ]
-    //       [ (1 * 6) + (1 * 8)   (3 * 7) + (3 * 8) ] ]
-    //
-    // { a in A, b in B => (* a b) ... }
-    //
-    // one-dimensional arrays:
-    // { a, b => + (* a b) ... }
-    //
-
 
     S := Exp.PrintExpression;
     WriteLn(S);
@@ -2705,17 +2324,9 @@ begin
   AppendSourceChunk(Chunk, '', 1);
 end;
 
-
-
-
 initialization
-  //DecimalSeparator := '.';
   DefaultFormatSettings.DecimalSeparator := '.';
-
   Tokenizer := TExpressionTokenizer.Create;
-  //TokenizerTest;
-  //CompileTest;
-
 
 finalization
   Tokenizer.Free;
