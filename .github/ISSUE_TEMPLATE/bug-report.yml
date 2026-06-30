@@ -43,7 +43,7 @@ body:
     id: command
     attributes:
       label: Command
-      description: Example: `./bin/mantra --raw example.m`
+      description: "Example: `./bin/mantra --raw example.m`"
   - type: textarea
     id: actual
     attributes:
@@ -66,6 +66,5 @@ body:
     attributes:
       label: Checks
       options:
-        - label: I checked `KNOWN_LIMITATIONS.md`.
-        - label: This is not a security report. Security-sensitive issues should follow `SECURITY.md`.
-
+        - label: "I checked `KNOWN_LIMITATIONS.md`."
+        - label: "This is not a security report. Security-sensitive issues should follow `SECURITY.md`."

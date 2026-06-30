@@ -1,0 +1,72 @@
+name: Feature Request
+description: Request a new Mantra capability, tool improvement, or documentation addition.
+title: "[feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Mantra is an experimental alpha language. Please check `KNOWN_LIMITATIONS.md`
+        and existing issues before filing a request.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What feature would you like to see?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Parser/syntax
+        - Evaluation
+        - Rewriting/transformation
+        - Inference
+        - Packages/modules
+        - CLI/runtime
+        - Server/MCP
+        - Documentation
+        - Build/CI
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What workflow, limitation, or user need would this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed solution
+      description: Describe the behavior, command, API, documentation, or workflow you want.
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples
+      description: Include concrete Mantra input, commands, or expected output when useful.
+      render: mantra
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Are there existing workarounds or different designs worth considering?
+  - type: textarea
+    id: risks
+    attributes:
+      label: Compatibility and risks
+      description: Note possible ambiguity, breaking changes, implementation risks, or test coverage needs.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: "I checked `KNOWN_LIMITATIONS.md`."
+        - label: "I searched for existing issues or proposals."
