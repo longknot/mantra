@@ -2,20 +2,13 @@
   "version": 1,
   "cells": [
     {
-      "id": "cell-1",
-      "kind": "markdown",
-      "language": "markdown",
-      "value": "# Basic plot example",
-      "metadata": {}
-    },
-    {
-      "id": "cec6ee85-dea4-440c-80e5-0bc15aa5eced",
+      "id": "ce63ceba-9a27-445d-9458-921900c50d56",
       "kind": "code",
       "language": "mantra",
-      "value": "import viz;\n\nk = 6.283;\nstep = 0.1;\n\n{ viz.line_range \"chart\" ( 0 .. k by step ) ( sin x ) };\n\n{ assign_path \"chart.width\" 640 };\n{ assign_path \"chart.height\" 400 };\n\n{ viz.show \"chart\" };",
+      "value": "import viz;\n\nk = 6.282;\nstep = 0.1;\n\n{ viz.line_range \"chart\" ( 0 .. k by step ) ( sin x ) \"sin x\" };\n{ viz.line_range \"chart\" ( 0 .. k by step ) ( cos x ) \"cos x\" };\n\n{ assign_path \"chart.width\" 640 };\n{ assign_path \"chart.height\" 400 };\n\n{ viz.show \"chart\" };",
       "metadata": {
         "mantra": {
-          "cellId": "cec6ee85-dea4-440c-80e5-0bc15aa5eced"
+          "cellId": "ce63ceba-9a27-445d-9458-921900c50d56"
         }
       }
     }
