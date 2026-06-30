@@ -162,6 +162,8 @@ type
     function AddTransition(const X: ansistring; Src, Dst: Integer): PState; overload;
     function AddTransition(const X: TCharSet; Dst: Integer): PState; overload;
     function AddTransition(const X: TCharSet; Src, Dst: Integer): PState; overload;
+    procedure SetTransition(const X: TCharSet; Src, Dst: Integer);
+    procedure SetTransition(C: Char; Src, Dst: Integer);
     procedure PostprocessTransitions;
 
     function Advance(ID: Integer; Token: AnsiChar): Integer; overload;
@@ -773,6 +775,22 @@ begin
   // A -> 'a' -> X(1)
   // A -> 'a' -> X(2) -> 'b'    (X(2).PrevID = X(1); A['a'] = X(2))
   // A -> 'a' -> X(3) -> 'c'    (X(3).PrevID = X(2); A['a'] = X(3))
+end;
+
+procedure TCustomTokenizer.SetTransition(const X: TCharSet; Src, Dst: Integer);
+var
+  C: AnsiChar;
+begin
+  FindState(Dst);
+  with FindState(Src)^ do
+    for C in GetCharSet(X) do
+      Transitions[C] := Dst;
+end;
+
+procedure TCustomTokenizer.SetTransition(C: Char; Src, Dst: Integer);
+begin
+  FindState(Dst);
+  FindState(Src)^.Transitions[C] := Dst;
 end;
 
 function TCustomTokenizer.GetCharSet(const X: TCharSet): TCharSet;

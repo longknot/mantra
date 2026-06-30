@@ -29,6 +29,7 @@ type
   TExpression = class(TCustomExpression)
   private
   public
+    //procedure AddToken(const Token: TTokenData); override;
     function GetTokenizer: TCustomTokenizer; override;
   end;
 
@@ -36,8 +37,11 @@ type
   TExpressionTree = class(TCustomTree)
   private
     FStatements: TIntegerDynArray;
+    //procedure ConnectChild(Index, AChild: Integer);
+    //procedure ConnectSibling(Index, ANext: Integer);
     function PrintNodes(Index: Integer; Data: Pointer): Integer;
   protected
+    // procedure InitializeNode(var ANode: TTreeNode); override;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -454,6 +458,16 @@ begin
   AddTransition('system', TK_SYSTEM);
   AddTransition('assign_path', TK_ASSIGN_PATH);
 
+  // 'nan' and 'inf' end in TK_FLOAT through the identifier path, which can
+  // merge identifier continuation transitions into TK_FLOAT. Restore numeric
+  // continuations last so decimal literals with multiple fractional digits
+  // remain floats (for example 0.10, 1.25).
+  SetTransition(['0'..'9'], TK_FLOAT, TK_FLOAT);
+  SetTransition('E', TK_FLOAT, TK_FLOAT_EXPONENT);
+  SetTransition('i', TK_FLOAT, TK_IMAG_I_FLOAT);
+  SetTransition('j', TK_FLOAT, TK_IMAG_J_FLOAT);
+  SetTransition('k', TK_FLOAT, TK_IMAG_K_FLOAT);
+
   PostprocessTransitions;
 end;
 
@@ -591,12 +605,8 @@ var
         begin
           ComputeScope := True;
           Result := AllocateNode;
-          //PComputeNode(Node[Result])^.Initialize;
           TComputeNode.InitTreeNode(Result);
 
-          //! Node[Result]^.Token := T;
-
-          //Expression.Token[T]^.ID := Expression.Token[T]^.ID or Op;
           ParseExpression(Result, ScopeID);
           Expression.Expect(TK_BACKTICK);
           ComputeScope := False;
@@ -624,6 +634,7 @@ var
         end;
       end;
     end;
+
 
     function AddNode(ID: Integer): Boolean;
     var
@@ -681,7 +692,7 @@ var
 
     function ParseIdentifier: Boolean;
     var
-      ID, TT, Definition, RuleNameToken, RuleNameNode: Integer;
+      ID, TT, AcceptedTokenId, Definition, RuleNameToken, RuleNameNode: Integer;
       PolicyToken, PolicyNode: Integer;
       NumericLiteralType: Integer;
       ImaginaryComponent: Integer;
@@ -753,9 +764,13 @@ var
       WriteLn('ParseIdentifier');
 {$ENDIF}
       TT := -1;
+      AcceptedTokenId := 0;
       if Assigned(Expression.CurToken) and
          (Expression.CurToken^.ID and TK_TYPE = TK_IDENTIFIER) then
+      begin
+        AcceptedTokenId := Expression.CurToken^.ID;
         TT := Expression.Accept(Expression.CurToken^.ID);
+      end;
       Result := TT <> -1;
       if Result then
       begin
@@ -770,7 +785,7 @@ var
             TIntegerNode.InitTreeNode(ID);
           Extra := Extra or ImaginaryComponent;
         end
-        else case X^.ID of
+        else case AcceptedTokenId of
           TK_INTEGER:
             TIntegerNode.InitTreeNode(ID); //PIntegerNode(Node[ID])^.Initialize;
           // TK_CONSTANT: ;
@@ -779,12 +794,12 @@ var
           TK_IMAG_I_INT, TK_IMAG_J_INT, TK_IMAG_K_INT:
             begin
               TIntegerNode.InitTreeNode(ID);
-              Extra := Extra or (X^.ID and TK_EXTRA_MASK);
+              Extra := Extra or (AcceptedTokenId and TK_EXTRA_MASK);
             end;
           TK_IMAG_I_FLOAT, TK_IMAG_J_FLOAT, TK_IMAG_K_FLOAT:
             begin
               TFloatNode.InitTreeNode(ID);
-              Extra := Extra or (X^.ID and TK_EXTRA_MASK);
+              Extra := Extra or (AcceptedTokenId and TK_EXTRA_MASK);
             end;
           TK_STRING: TStringNode.InitTreeNode(ID); //PStringNode(Node[ID])^.Initialize;
           TK_PACKAGE:
@@ -1149,7 +1164,7 @@ var
             end;
           TK_RULE_FORWARD, TK_RULE_REVERSE:
             begin
-              if X^.ID = TK_RULE_FORWARD then
+              if AcceptedTokenId = TK_RULE_FORWARD then
                 TForwardRuleNode.InitTreeNode(ID)
               else
                 TReverseRuleNode.InitTreeNode(ID);
@@ -2323,6 +2338,9 @@ procedure AppendSourceChunk(const Chunk: ansistring);
 begin
   AppendSourceChunk(Chunk, '', 1);
 end;
+
+
+
 
 initialization
   DefaultFormatSettings.DecimalSeparator := '.';
