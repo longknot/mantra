@@ -50,7 +50,7 @@ tests/run.sh --filter repeat
 tests/run.sh --jobs 12
 ```
 
-The runner feeds each `.in` file to `./bin/mantra --raw [args]`, captures the
+The runner feeds each `.in` file to `mantra --raw [args]`, captures the
 raw stdout, and compares it against the `.out` file. By default, both expected
 and actual output are normalized (whitespace collapsed, blank lines removed)
 before comparison. In `--strict` mode, the comparison is exact — spaces and

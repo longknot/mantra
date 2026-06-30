@@ -33,7 +33,7 @@ Shows each input line prefixed with `>` before the runtime processes it. Both
 `--show-input` and `--input` are accepted as flags.
 
 ```bash
-./bin/mantra --show-input program.m
+mantra --show-input program.m
 ```
 
 Useful for multi-line programs where you want to correlate each output line with
@@ -43,7 +43,7 @@ the specific input that produced it.
 
 ```bash
 # tests/cases/boolean_and_compute
-./bin/mantra --show-input tests/cases/boolean_and_compute.in
+mantra --show-input tests/cases/boolean_and_compute.in
 ```
 
 Input (`boolean_and_compute.in`):
@@ -67,7 +67,7 @@ Prints the tokenizer output during compilation. Displays each token with its
 text value and source position.
 
 ```bash
-./bin/mantra --show-tokens program.m
+mantra --show-tokens program.m
 ```
 
 ### Output format
@@ -89,7 +89,7 @@ For the source line `print { 1 }`:
 
 ```bash
 # tests/cases/show_tokens_line_col
-./bin/mantra --show-tokens tests/cases/show_tokens_line_col.in
+mantra --show-tokens tests/cases/show_tokens_line_col.in
 ```
 
 Input:
@@ -116,8 +116,8 @@ normally be suppressed. This is the primary flag for inspecting the full
 execution trace.
 
 ```bash
-./bin/mantra --debug program.m
-./bin/mantra -d program.m
+mantra --debug program.m
+mantra -d program.m
 ```
 
 ### How it works
@@ -151,7 +151,7 @@ Prints a parser-friendly intermediate representation for each non-output
 statement. Shows the AST shape after parsing but before evaluation.
 
 ```bash
-./bin/mantra --debug-ir program.m
+mantra --debug-ir program.m
 ```
 
 ### Output format
@@ -194,7 +194,7 @@ shape differs from expectations.
 Prints unformatted `TreeValue` output instead of the pretty-printed result.
 
 ```bash
-./bin/mantra --raw program.m
+mantra --raw program.m
 ```
 
 ### When to use
@@ -215,15 +215,15 @@ passed through another evaluation pass, so computed expressions are reduced and
 variables are resolved in the displayed output.
 
 ```bash
-./bin/mantra --eval program.m
-./bin/mantra -e program.m
+mantra --eval program.m
+mantra -e program.m
 ```
 
 ### Example
 
 ```bash
 # With --eval, computed expressions in output are reduced
-./bin/mantra --eval --eval='+ 1 2'
+mantra --eval --eval='+ 1 2'
 ```
 
 The `--eval=EXPR` form (without the `-e` flag) appends and runs an expression
@@ -235,16 +235,16 @@ All output inspection flags work independently and can be combined:
 
 ```bash
 # Show tokens, input, and all statement output
-./bin/mantra --show-tokens --show-input --debug program.m
+mantra --show-tokens --show-input --debug program.m
 
 # Raw tree output with debug IR
-./bin/mantra --raw --debug-ir program.m
+mantra --raw --debug-ir program.m
 
 # Tokenize and evaluate output
-./bin/mantra --show-tokens --eval program.m
+mantra --show-tokens --eval program.m
 
 # Full debugging of a failing program
-./bin/mantra --debug --debug-ir --show-tokens program.m
+mantra --debug --debug-ir --show-tokens program.m
 ```
 
 ## When to Use Each Flag

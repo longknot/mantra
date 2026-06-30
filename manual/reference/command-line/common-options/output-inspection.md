@@ -8,7 +8,7 @@ statement-by-statement evaluation.
 ## `--raw`
 
 ```bash
-./bin/mantra --raw program.m
+mantra --raw program.m
 ```
 
 Prints unformatted `TreeValue` output instead of the pretty-printed result. Use
@@ -18,8 +18,8 @@ a stable, non-formatted representation.
 ## `--debug` and `-d`
 
 ```bash
-./bin/mantra --debug program.m
-./bin/mantra -d program.m
+mantra --debug program.m
+mantra -d program.m
 ```
 
 Prints every statement output, including intermediate results that would
@@ -33,7 +33,7 @@ deprecation warning on stderr. Migrate to `--debug` / `-d`.
 ## `--debug-ir`
 
 ```bash
-./bin/mantra --debug-ir program.m
+mantra --debug-ir program.m
 ```
 
 Prints a parser-friendly intermediate representation for each non-output
@@ -47,8 +47,8 @@ any evaluation or rewriting occurs.
 ## `--show-input` and `--input`
 
 ```bash
-./bin/mantra --show-input program.m
-./bin/mantra --input program.m
+mantra --show-input program.m
+mantra --input program.m
 ```
 
 Shows each input line prefixed with `>` before processing. Both `--show-input`
@@ -58,7 +58,7 @@ correlate output with the specific input line that produced it.
 ## `--show-tokens`
 
 ```bash
-./bin/mantra --show-tokens program.m
+mantra --show-tokens program.m
 ```
 
 Shows the tokenizer output during compilation. Displays each token with its
@@ -103,8 +103,8 @@ The token line is emitted first, then the normal program output follows.
 ## `--eval` and `-e`
 
 ```bash
-./bin/mantra --eval program.m
-./bin/mantra -e program.m
+mantra --eval program.m
+mantra -e program.m
 ```
 
 Evaluates output before printing. When enabled, the final result tree is passed
@@ -117,16 +117,16 @@ All output inspection flags work independently and can be combined:
 
 ```bash
 # Show tokens, input, and all statement output
-./bin/mantra --show-tokens --show-input --debug program.m
+mantra --show-tokens --show-input --debug program.m
 
 # Raw tree output with debug IR
-./bin/mantra --raw --debug-ir program.m
+mantra --raw --debug-ir program.m
 
 # Tokenize and evaluate output
-./bin/mantra --show-tokens --eval program.m
+mantra --show-tokens --eval program.m
 
 # Raw output with inline expression
-./bin/mantra --raw --eval='+ 1 2'
+mantra --raw --eval='+ 1 2'
 ```
 
 ## When to Use

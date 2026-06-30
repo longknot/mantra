@@ -6,7 +6,7 @@ event log when a Mantra program terminates with an exception.
 ## Quick Start
 
 ```bash
-./bin/mantra --debugger-postmortem program.m
+mantra --debugger-postmortem program.m
 ```
 
 When the program raises an exception, Mantra prints the standard error message
@@ -111,13 +111,13 @@ opens. Inside the CLI, you can also run the `postmortem` or `pm` command to
 reprint the report at any time.
 
 ```bash
-./bin/mantra --debugger-postmortem --debugger-cli program.m
+mantra --debugger-postmortem --debugger-cli program.m
 ```
 
 ### With Breakpoints
 
 ```bash
-./bin/mantra --debugger-postmortem --break-source=program.m:5 program.m
+mantra --debugger-postmortem --break-source=program.m:5 program.m
 ```
 
 If a breakpoint causes execution to pause, the postmortem report will show
@@ -130,7 +130,7 @@ The postmortem flag requires the debugger event recorder to be enabled. If
 enabled automatically as a dependency.
 
 ```bash
-./bin/mantra --debugger-postmortem program.m
+mantra --debugger-postmortem program.m
 ```
 
 ## Example
@@ -142,7 +142,7 @@ print x
 ```
 
 ```bash
-$ ./bin/mantra --debugger-postmortem program.m
+$ mantra --debugger-postmortem program.m
 Error: undefined variable 'x'
 Debugger Postmortem
 Pause reason: exception

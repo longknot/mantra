@@ -11,12 +11,12 @@ result and normal output does not reveal which rule or state caused the change.
 ## Syntax
 
 ```bash
-./bin/mantra --event-log program.m          # default: diag + text mode
-./bin/mantra --event-log=diag program.m     # diag level, text output
-./bin/mantra --event-log=trace program.m    # trace level (more detail), text output
-./bin/mantra --event-log=json program.m     # diag level, JSON output
-./bin/mantra --event-log=trace,json program.m  # trace level, JSON output
-./bin/mantra --event-log=text program.m     # explicit text output
+mantra --event-log program.m          # default: diag + text mode
+mantra --event-log=diag program.m     # diag level, text output
+mantra --event-log=trace program.m    # trace level (more detail), text output
+mantra --event-log=json program.m     # diag level, JSON output
+mantra --event-log=trace,json program.m  # trace level, JSON output
+mantra --event-log=text program.m     # explicit text output
 ```
 
 ## Event Levels
@@ -47,7 +47,7 @@ events in JSON format.
 ## Default Behavior
 
 ```bash
-./bin/mantra --event-log program.m
+mantra --event-log program.m
 ```
 
 Equivalent to `--event-log=diag,text`. Events are written to the internal event
@@ -85,7 +85,7 @@ Event sources live in the matcher (`matcher_ir.pas`), the inference engine
 When a rule's LHS/RHS variable sets mismatch, `diag` level catches it:
 
 ```bash
-echo 'print { x ? [ x ==>> ] }' | ./bin/mantra --event-log=diag
+echo 'print { x ? [ x ==>> ] }' | mantra --event-log=diag
 ```
 
 Output:
@@ -103,7 +103,7 @@ The event explains why the rule was rejected; `x` is the final program output
 When a rule matches and rewrites, `trace` level confirms the operation:
 
 ```bash
-echo 'print { [ 1 ] ? [ [ x ] => x ] }' | ./bin/mantra --event-log=trace
+echo 'print { [ 1 ] ? [ [ x ] => x ] }' | mantra --event-log=trace
 ```
 
 Output:
@@ -121,7 +121,7 @@ after rewriting `[ 1 ]` with `[ x ] => x`.
 For machine consumption, combine any level with `json`:
 
 ```bash
-echo 'print { [ 1 ] ? [ [ x ] => x ] }' | ./bin/mantra --event-log=trace,json
+echo 'print { [ 1 ] ? [ [ x ] => x ] }' | mantra --event-log=trace,json
 ```
 
 Output:
@@ -132,7 +132,7 @@ Output:
 ```
 
 ```bash
-echo 'print { x ? [ x ==>> ] }' | ./bin/mantra --event-log=json
+echo 'print { x ? [ x ==>> ] }' | mantra --event-log=json
 ```
 
 Output:
@@ -145,9 +145,9 @@ x
 ### Combined levels and formats
 
 ```bash
-./bin/mantra --event-log=trace,json program.m   # trace events as JSON
-./bin/mantra --event-log=diag,text program.m    # diag events as text (explicit)
-./bin/mantra --event-log program.m              # diag + text (default)
+mantra --event-log=trace,json program.m   # trace events as JSON
+mantra --event-log=diag,text program.m    # diag events as text (explicit)
+mantra --event-log program.m              # diag + text (default)
 ```
 
 ## When to Use Event Logs

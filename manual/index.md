@@ -16,13 +16,13 @@ If you have Mantra built and want to run something immediately:
 
 ```bash
 # Arithmetic in a compute scope
-echo '` + 1 2 3`' | ./bin/mantra
+echo '` + 1 2 3`' | mantra
 
 # Repeat and expand
-echo '[ { 1 2 3 : 4 } ]' | ./bin/mantra
+echo '[ { 1 2 3 : 4 } ]' | mantra
 
 # Interactive REPL
-./bin/mantra --interactive
+mantra --interactive
 ```
 
 For a full walkthrough — from building the runtime to running the 370+ fixture

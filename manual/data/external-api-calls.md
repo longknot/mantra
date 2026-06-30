@@ -10,7 +10,7 @@ system http <response-prefix> <request-path>;
 Network access is disabled by default. Enable it explicitly:
 
 ```bash
-./bin/mantra --set mantra.external.enabled=true program.m
+mantra --set mantra.external.enabled=true program.m
 ```
 
 HTTPS is the default allowed scheme. HTTP, private networks, and individual
@@ -126,7 +126,7 @@ certificate verification is explicitly enabled.
 For local development against a loopback service:
 
 ```bash
-./bin/mantra \
+mantra \
   --set mantra.external.enabled=true \
   --set 'mantra.external.http.allowed_schemes="http,https"' \
   --set mantra.external.http.allow_private_networks=true \

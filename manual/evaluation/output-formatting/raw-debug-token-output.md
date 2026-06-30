@@ -141,7 +141,7 @@ is called.
 ### Example
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra --show-input
+echo '[ + 1 2 3 ]' | mantra --show-input
 ```
 
 **Output:**
@@ -189,7 +189,7 @@ These flags can be combined. When multiple diagnostic flags are active, the
 output layers stack:
 
 ```bash
-./bin/mantra --debug --raw --show-input program.m
+mantra --debug --raw --show-input program.m
 ```
 
 This produces:

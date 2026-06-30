@@ -14,7 +14,7 @@ the command's output.
 
 ```bash
 # This looks like valid Mantra...
-echo "`[ + 1 2 3 ] : 3`" | ./bin/mantra
+echo "`[ + 1 2 3 ] : 3`" | mantra
 
 # ...but the shell runs `[ + 1 2 3 ] : 3` as a shell command first.
 # Mantra never sees the backticks.
@@ -31,7 +31,7 @@ quotes prevent all shell interpretation — no variable expansion, no command
 substitution, no escape sequences.
 
 ```bash
-echo '`[ + 1 2 3 ] : 3`' | ./bin/mantra
+echo '`[ + 1 2 3 ] : 3`' | mantra
 ```
 
 Expected output:
@@ -52,7 +52,7 @@ interpret the backtick content before passing it to Mantra.
 
 ```bash
 # Incorrect — shell interprets backticks
-echo "`[ + 1 2 3 ] : 3`" | ./bin/mantra
+echo "`[ + 1 2 3 ] : 3`" | mantra
 ```
 
 ### No quotes at all
@@ -62,7 +62,7 @@ characters, breaking it into separate arguments before Mantra sees it.
 
 ```bash
 # Incorrect — shell breaks the program into separate tokens
-echo `[ + 1 2 3 ] : 3` | ./bin/mantra
+echo `[ + 1 2 3 ] : 3` | mantra
 ```
 
 ### Dollar-sign backticks
@@ -97,7 +97,7 @@ For programs spanning multiple lines, use a heredoc with a **single-quoted
 delimiter** to prevent shell expansion:
 
 ```bash
-./bin/mantra <<'EOF'
+mantra <<'EOF'
 x = [ 1 2 3 ]
 `[ + 1 2 3 ]`
 x ? [ y => y + 1 ]
@@ -110,12 +110,12 @@ the heredoc would still process backticks as command substitution.
 
 ```bash
 # Incorrect — shell expands backticks inside the heredoc
-./bin/mantra <<EOF
+mantra <<EOF
 `[ + 1 2 3 ]`
 EOF
 
 # Correct — single-quoted delimiter prevents expansion
-./bin/mantra <<'EOF'
+mantra <<'EOF'
 `[ + 1 2 3 ]`
 EOF
 ```
@@ -128,7 +128,7 @@ a single quote (used for fixed scope `' ... '`), you have two options:
 ### Option 1: Close and reopen with an escaped quote
 
 ```bash
-echo 'program part '\''fixed scope'\'' rest' | ./bin/mantra
+echo 'program part '\''fixed scope'\'' rest' | mantra
 ```
 
 This breaks the single-quoted string, inserts a literal single quote
@@ -137,7 +137,7 @@ This breaks the single-quoted string, inserts a literal single quote
 ### Option 2: Use a heredoc
 
 ```bash
-./bin/mantra <<'EOF'
+mantra <<'EOF'
 ' + 1 2 '
 EOF
 ```
@@ -148,7 +148,7 @@ any escaping needed.
 ### Option 3: Use dollar-sign quoting (bash/zsh)
 
 ```bash
-echo $'program with \'fixed scope\' part' | ./bin/mantra
+echo $'program with \'fixed scope\' part' | mantra
 ```
 
 The `$'...'` syntax allows backslash escapes inside, including `\'` for
@@ -201,7 +201,7 @@ literal single quotes.
 ### Simple compute expression
 
 ```bash
-echo '` + 1 2 3 `' | ./bin/mantra
+echo '` + 1 2 3 `' | mantra
 ```
 
 Output: `+ 6`
@@ -209,7 +209,7 @@ Output: `+ 6`
 ### Nested compute scopes
 
 ```bash
-echo '[ ` + 1 2 ` ` + 3 4 ` ]' | ./bin/mantra
+echo '[ ` + 1 2 ` ` + 3 4 ` ]' | mantra
 ```
 
 Output: `[ + 3 + 7 ]`
@@ -217,7 +217,7 @@ Output: `[ + 3 + 7 ]`
 ### Compute with repeat
 
 ```bash
-echo '`[ + 1 2 3 ] : 3`' | ./bin/mantra
+echo '`[ + 1 2 3 ] : 3`' | mantra
 ```
 
 Output: `[ + 6 ] [ + 6 ] [ + 6 ]`
@@ -225,7 +225,7 @@ Output: `[ + 6 ] [ + 6 ] [ + 6 ]`
 ### Deeply nested compute and evaluation scopes
 
 ```bash
-echo '{ [ `+ 1 + 2 + 3` : 2 ] : 3 }' | ./bin/mantra
+echo '{ [ `+ 1 + 2 + 3` : 2 ] : 3 }' | mantra
 ```
 
 Output: `[ + 6 + 6 ] [ + 6 + 6 ] [ + 6 + 6 ]`
@@ -233,13 +233,13 @@ Output: `[ + 6 + 6 ] [ + 6 + 6 ] [ + 6 + 6 ]`
 ### Selection with backticks
 
 ```bash
-echo '[ 1 2 3 ] ? [ x => ` + x 1` ]' | ./bin/mantra
+echo '[ 1 2 3 ] ? [ x => ` + x 1` ]' | mantra
 ```
 
 ### Multi-statement program with heredoc
 
 ```bash
-./bin/mantra <<'EOF'
+mantra <<'EOF'
 x = 10
 y = ` + x 5 `
 ` * y 2 `
@@ -251,7 +251,7 @@ EOF
 ### "command not found" error
 
 ```bash
-$ echo "`[ + 1 2 3 ] : 3`" | ./bin/mantra
+$ echo "`[ + 1 2 3 ] : 3`" | mantra
 bash: [ + 1 2 3 ] : 3: command not found
 ```
 
@@ -267,7 +267,7 @@ and may produce confusing output or errors.
 ### Unexpected variable expansion
 
 ```bash
-$ echo "` + $x 2 `" | ./bin/mantra
+$ echo "` + $x 2 `" | mantra
 ```
 
 Both the backticks (command substitution) and `$x` (variable expansion)

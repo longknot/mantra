@@ -27,7 +27,7 @@ the runtime (e.g., `--debug`, `--set`, `--debugger-cli`).
 When the test runner executes a case, it runs:
 
 ```bash
-printf '%s\n' "$input_text" | ./bin/mantra --raw "${case_args[@]}"
+printf '%s\n' "$input_text" | mantra --raw "${case_args[@]}"
 ```
 
 The `--raw` flag is **always** added automatically — it produces unformatted
@@ -210,7 +210,7 @@ details on normalization, parallel execution, and fail output.
 2. **Run it manually** to capture the actual output:
 
    ```bash
-   ./bin/mantra --raw < tests/cases/<case>.in
+   mantra --raw < tests/cases/<case>.in
    ```
 
 3. **Create `tests/cases/<case>.out`** with the captured output.
@@ -233,10 +233,10 @@ When creating a new fixture, run the program manually to see the raw output:
 
 ```bash
 # Simple case
-echo '{ ~ + 1 2 3 }' | ./bin/mantra --raw
+echo '{ ~ + 1 2 3 }' | mantra --raw
 
 # With args
-echo '{ ~ + 1 2 3 }' | ./bin/mantra --raw --debug
+echo '{ ~ + 1 2 3 }' | mantra --raw --debug
 ```
 
 Copy the output exactly into the `.out` file. Remember that `--raw` is always

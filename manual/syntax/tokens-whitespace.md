@@ -188,7 +188,7 @@ The `--show-tokens` CLI flag prints the token stream with source locations,
 useful for debugging tokenization issues:
 
 ```bash
-./bin/mantra --show-tokens program.m
+mantra --show-tokens program.m
 ```
 
 ## Token Categories

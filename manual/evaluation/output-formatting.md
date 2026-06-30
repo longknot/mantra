@@ -157,7 +157,7 @@ Prints every input line prefixed with `>`. Useful for comparing input
 against output.
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra --show-input
+echo '[ + 1 2 3 ]' | mantra --show-input
 ```
 
 **Output:**

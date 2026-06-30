@@ -5,7 +5,7 @@ creating a file. Pipe source code to the `bin/mantra` executable and it
 executes immediately.
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra
+echo '[ + 1 2 3 ]' | mantra
 ```
 
 Expected output:
@@ -38,7 +38,7 @@ Use a positional `-` argument to force stdin input regardless of whether
 it is connected to a terminal:
 
 ```bash
-./bin/mantra -
+mantra -
 ```
 
 This is useful in scripts where you want to make the stdin dependency
@@ -55,7 +55,7 @@ Unexpected argument: -
 For programs that span multiple lines, use a heredoc:
 
 ```bash
-./bin/mantra <<'EOF'
+mantra <<'EOF'
 x = [ 1 2 3 ]
 x ? [ y => y + 1 ]
 EOF
@@ -72,10 +72,10 @@ for command substitution. Always wrap piped programs in **single quotes**:
 
 ```bash
 # Correct — Mantra receives the backticks
-echo '`[ + 1 2 3 ] : 3`' | ./bin/mantra
+echo '`[ + 1 2 3 ] : 3`' | mantra
 
 # Incorrect — shell interprets backticks before Mantra
-echo "`[ + 1 2 3 ] : 3`" | ./bin/mantra
+echo "`[ + 1 2 3 ] : 3`" | mantra
 ```
 
 For detailed guidance, see [Shell Quoting](shell-quoting.md).
@@ -87,7 +87,7 @@ Stdin input works with all command-line flags. Common combinations:
 ### Pre-defined variables (`--set`)
 
 ```bash
-echo 'x * 2' | ./bin/mantra --set x=21
+echo 'x * 2' | mantra --set x=21
 ```
 
 Expected output:
@@ -102,7 +102,7 @@ variables are available when the piped program runs.
 ### Eval expressions (`--eval=`)
 
 ```bash
-echo '' | ./bin/mantra --eval='+ 1 2'
+echo '' | mantra --eval='+ 1 2'
 ```
 
 The `--eval=` expressions run after stdin is processed. They are each wrapped
@@ -111,7 +111,7 @@ as `print { EXPR }` and executed in the same runtime context.
 ### Debug output (`--debug`)
 
 ```bash
-echo '[ { 1 2 3 : 4 } ]' | ./bin/mantra --debug
+echo '[ { 1 2 3 : 4 } ]' | mantra --debug
 ```
 
 Prints the output after every statement, useful for tracing multi-statement
@@ -120,7 +120,7 @@ piped programs.
 ### Raw output (`--raw`)
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra --raw
+echo '[ + 1 2 3 ]' | mantra --raw
 ```
 
 Prints unformatted `TreeValue` output instead of the default formatted tree.

@@ -7,7 +7,7 @@ Mantra provides three debugger activation modes that control how the debugger in
 The `--debugger` flag enables the debugger event recorder without pausing execution or opening any interactive prompt. The recorder silently captures all semantic events — statement boundaries, callable dispatches, rewrite probes, inference states, variable writes, setting access, and exceptions — into a rolling buffer (256 events by default).
 
 ```bash
-./bin/mantra --debugger program.m
+mantra --debugger program.m
 ```
 
 This mode does not pause execution. The event recorder runs in the background, maintaining an internal stack frame and event log. If no other debugger feature (CLI, postmortem, or breakpoints) is configured, the recorded data is not printed to stdout.
@@ -28,7 +28,7 @@ Under the hood, `--debugger` creates a `TDebuggerState` instance (which extends 
 The `--debugger-cli` flag enables the full interactive debugger. When execution pauses — at breakpoints, stepping commands, or runtime exceptions — the `dbg> ` command loop opens where you can inspect the stack, variables, settings, and recent events.
 
 ```bash
-./bin/mantra --debugger-cli program.m
+mantra --debugger-cli program.m
 ```
 
 The debugger CLI opens whenever one of these conditions is met:
@@ -81,7 +81,7 @@ The three stepping commands differ in granularity:
 **When stdin is not a TTY**, the debugger still accepts piped input, enabling scripted debugging sessions:
 ```bash
 printf '%s\n' 'reason' 'bt' 'events 3' 'quit' | \
-  ./bin/mantra --debugger-cli --break-rule='*foo*' program.m
+  mantra --debugger-cli --break-rule='*foo*' program.m
 ```
 
 **When to use:**
@@ -106,7 +106,7 @@ The `inspect children` and `inspect value` variants support lazy trie expansion 
 The `--debugger-postmortem` flag prints a structured debugger report — stack trace and recent events — whenever a program raises an exception. No interactive prompt opens; the program prints the report and exits immediately after.
 
 ```bash
-./bin/mantra --debugger-postmortem program.m
+mantra --debugger-postmortem program.m
 ```
 
 The report structure always contains three sections:
@@ -146,7 +146,7 @@ The report structure always contains three sections:
 Both flags can coexist. When combined, the postmortem report prints first when an exception occurs, followed by the interactive CLI for deeper inspection:
 
 ```bash
-./bin/mantra --debugger-postmortem --debugger-cli program.m
+mantra --debugger-postmortem --debugger-cli program.m
 ```
 
 This is useful when you want both the printed report (for logs) and the interactive prompt (for follow-up investigation). Inside the CLI, you can re-run `postmortem` or `pm` at any time to reprint the report.
@@ -157,8 +157,8 @@ The `--debugger-postmortem` flag automatically enables the event recorder, so `-
 
 ```bash
 # These are equivalent:
-./bin/mantra --debugger --debugger-postmortem program.m
-./bin/mantra --debugger-postmortem program.m
+mantra --debugger --debugger-postmortem program.m
+mantra --debugger-postmortem program.m
 ```
 
 ### With Breakpoints
@@ -167,13 +167,13 @@ All three modes work with `--break-*` flags. Note that any `--break-*` flag auto
 
 ```bash
 # Interactive debugging with breakpoints
-./bin/mantra --debugger-cli --break-callable=main.ping --break-source=program.m:5 program.m
+mantra --debugger-cli --break-callable=main.ping --break-source=program.m:5 program.m
 
 # Postmortem with a source breakpoint
-./bin/mantra --debugger-postmortem --break-source=program.m:5 program.m
+mantra --debugger-postmortem --break-source=program.m:5 program.m
 
 # Silent recording with breakpoints (breakpoints still checked but no pause UI)
-./bin/mantra --debugger --break-callable=main.ping program.m
+mantra --debugger --break-callable=main.ping program.m
 ```
 
 ## See Also

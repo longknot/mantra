@@ -84,7 +84,7 @@ begins.
 The CLI flags set the initial search settings for the session:
 
 ```bash
-./bin/mantra --beam-width 2 --congruence-budget 1 program.m
+mantra --beam-width 2 --congruence-budget 1 program.m
 ```
 
 | Flag | Meaning |

@@ -162,7 +162,7 @@ committed. This means a failed guard does not modify the subject tree.
 Guards can be disabled globally with the `--no-guards` CLI flag:
 
 ```bash
-./bin/mantra --no-guards program.m
+mantra --no-guards program.m
 ```
 
 When guards are disabled, the matcher ignores all `~( ... )` expressions and

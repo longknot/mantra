@@ -37,7 +37,7 @@ statement — including setup statements — after execution. The output loop in
 if it is not, and `--debug` is enabled, it formats and emits the result.
 
 ```bash
-echo 'x = [ + 1 2 3 ]' | ./bin/mantra --debug
+echo 'x = [ + 1 2 3 ]' | mantra --debug
 ```
 
 **Output:**
@@ -141,7 +141,7 @@ With `--raw`, `print` bypasses formatting entirely and uses `TreeValue` (the
 unformatted string representation of the raw tree) instead:
 
 ```bash
-echo 'print { 1 + 1 }' | ./bin/mantra --raw
+echo 'print { 1 + 1 }' | mantra --raw
 ```
 
 **Output:**

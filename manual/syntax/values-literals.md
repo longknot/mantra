@@ -182,7 +182,7 @@ See [Evaluation](../evaluation/index.md) for variable context management.
 Variables can be set on the command line before execution:
 
 ```bash
-./bin/mantra --set x=5 --set rules='[ x => x + 1 ]' program.m
+mantra --set x=5 --set rules='[ x => x + 1 ]' program.m
 ```
 
 See [Getting Started](../getting-started/index.md) for CLI usage.

@@ -36,7 +36,7 @@ For more on the build process, see [Building the Runtime](getting-started/buildi
 Confirm the binary runs by printing the help screen:
 
 ```bash
-./bin/mantra --help
+mantra --help
 ```
 
 You should see an ASCII art banner followed by a usage line and a list of CLI
@@ -49,7 +49,7 @@ flags. If this works, the build succeeded.
 The quickest way to run Mantra is to pipe source through standard input:
 
 ```bash
-echo '[ { 1 2 3 : 4 } ]' | ./bin/mantra
+echo '[ { 1 2 3 : 4 } ]' | mantra
 ```
 
 This expression creates a list containing an evaluation scope. The `:` (repeat)
@@ -68,7 +68,7 @@ Backtick scopes trigger arithmetic reduction. Wrap the full program in single
 quotes so the shell does not interpret the backticks:
 
 ```bash
-echo '`[ + 1 2 3 ] : 3`' | ./bin/mantra
+echo '`[ + 1 2 3 ] : 3`' | mantra
 ```
 
 The compute scope reduces `+ 1 2 3` to `6`, then the repeat operator clones the
@@ -83,7 +83,7 @@ result three times. The expected `OUTPUT` is:
 Mantra supports variable binding and tree substitution:
 
 ```bash
-echo 'x = [ + 1 2 3 ]' | ./bin/mantra
+echo 'x = [ + 1 2 3 ]' | mantra
 ```
 
 The variable `x` is bound to the tree `[ + 1 2 3 ]`. The expected `OUTPUT` is:
@@ -108,7 +108,7 @@ EOF
 Then run it:
 
 ```bash
-./bin/mantra hello.m
+mantra hello.m
 ```
 
 The expected `OUTPUT` has two lines:
@@ -128,7 +128,7 @@ compute scope that substitutes `x` and reduces the arithmetic.
 Mantra includes a REPL for exploring expressions interactively:
 
 ```bash
-./bin/mantra --interactive
+mantra --interactive
 ```
 
 Type expressions and press Enter to evaluate them. The REPL processes input
@@ -159,7 +159,7 @@ tests/run.sh --filter repeat  # run only tests matching "repeat"
 
 Each test fixture in `tests/cases/` has three optional files:
 
-- `<name>.in` — input source passed to `./bin/mantra`
+- `<name>.in` — input source passed to `mantra`
 - `<name>.out` — expected `OUTPUT` lines for comparison
 - `<name>.args` — optional CLI arguments (one per line)
 

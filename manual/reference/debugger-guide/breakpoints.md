@@ -27,34 +27,34 @@ at the start of execution:
 
 ```bash
 # Break when main.ping dispatches
-./bin/mantra --debugger-cli --break-callable=main.ping program.m
+mantra --debugger-cli --break-callable=main.ping program.m
 
 # Break when any callable matching lib/* dispatches
-./bin/mantra --debugger-cli --break-callable='lib/*' program.m
+mantra --debugger-cli --break-callable='lib/*' program.m
 
 # Break on line 42 of the main file
-./bin/mantra --debugger-cli --break-source=42 program.m
+mantra --debugger-cli --break-source=42 program.m
 
 # Break on a specific file and line
-./bin/mantra --debugger-cli --break-source=program.m:42 program.m
+mantra --debugger-cli --break-source=program.m:42 program.m
 
 # Break on file, line, and column
-./bin/mantra --debugger-cli --break-source=lib.m:10:5 program.m
+mantra --debugger-cli --break-source=lib.m:10:5 program.m
 
 # Break when a rule matching *transform* fires
-./bin/mantra --debugger-cli --break-rule='*transform*' program.m
+mantra --debugger-cli --break-rule='*transform*' program.m
 
 # Break when a statement containing "assign" executes
-./bin/mantra --debugger-cli --break-statement='*assign*' program.m
+mantra --debugger-cli --break-statement='*assign*' program.m
 
 # Break when an inference state containing "step=1" is entered
-./bin/mantra --debugger-cli --break-inference='*step=1*' program.m
+mantra --debugger-cli --break-inference='*step=1*' program.m
 ```
 
 You can specify multiple `--break-*` flags to set several breakpoints at once:
 
 ```bash
-./bin/mantra --debugger-cli \
+mantra --debugger-cli \
   --break-callable=main.ping \
   --break-callable=main.fail \
   --break-source=program.m:5 \
@@ -119,7 +119,7 @@ File names in source breakpoints support wildcards. Use this to break in
 imported or included files:
 
 ```bash
-./bin/mantra --debugger-cli --break-source='*sub.m:3' main.m
+mantra --debugger-cli --break-source='*sub.m:3' main.m
 ```
 
 This breaks on line 3 of any file ending in `sub.m` that gets loaded during
@@ -197,7 +197,7 @@ You can combine breakpoints with `--debugger-postmortem` for non-interactive
 diagnostics:
 
 ```bash
-./bin/mantra --debugger-postmortem --break-source=program.m:5 program.m
+mantra --debugger-postmortem --break-source=program.m:5 program.m
 ```
 
 If execution hits the breakpoint and continues to an exception, the postmortem

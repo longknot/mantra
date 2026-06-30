@@ -179,7 +179,7 @@ Breakpoints can be set on included files using the `--break-source` flag with
 a wildcard path pattern:
 
 ```bash
-./bin/mantra --debugger-cli --break-source="*helpers.m:3" main.m
+mantra --debugger-cli --break-source="*helpers.m:3" main.m
 ```
 
 ## See Also

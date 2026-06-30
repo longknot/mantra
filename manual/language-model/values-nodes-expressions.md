@@ -122,7 +122,7 @@ Output:
 Variables can be predefined on the command line:
 
 ```bash
-./bin/mantra --set x=5 --set rules='[ x => x + 1 ]' program.m
+mantra --set x=5 --set rules='[ x => x + 1 ]' program.m
 ```
 
 Variable resolution order:

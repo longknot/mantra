@@ -6,7 +6,7 @@ immediately — no source code is parsed or executed.
 ## Usage
 
 ```bash
-./bin/mantra --help
+mantra --help
 ```
 
 ## When Help Appears Automatically
@@ -15,7 +15,7 @@ Help is also the **default behavior** when Mantra runs with no input file,
 no redirected stdin, and no `--interactive` flag:
 
 ```bash
-./bin/mantra
+mantra
 ```
 
 If no file is provided and stdin is not redirected, the `Bootstrap` procedure
@@ -106,15 +106,15 @@ Since the output is plain text after the ANSI banner, you can pipe or
 redirect it for offline reference:
 
 ```bash
-./bin/mantra --help > help.txt
-./bin/mantra --help | grep --color=never "debug"
+mantra --help > help.txt
+mantra --help | grep --color=never "debug"
 ```
 
 To strip ANSI color codes from the banner, pipe through `ansi2txt` or
 similar tools:
 
 ```bash
-./bin/mantra --help | sed 's/\x1b\[[0-9;]*m//g'
+mantra --help | sed 's/\x1b\[[0-9;]*m//g'
 ```
 
 ## Source

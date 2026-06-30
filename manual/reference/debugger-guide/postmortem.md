@@ -22,7 +22,7 @@ naturally in test harnesses, log collectors, and CI runners.
 
 ```bash
 # Print postmortem report after any exception
-./bin/mantra --debugger-postmortem program.m
+mantra --debugger-postmortem program.m
 ```
 
 The flag `--debugger-postmortem` enables the event recorder and marks the runtime
@@ -36,7 +36,7 @@ breakpoint, it pauses; if it continues and then exceptions, the postmortem repor
 still prints at the end.
 
 ```bash
-./bin/mantra --debugger-postmortem --break-source=program.m:5 program.m
+mantra --debugger-postmortem --break-source=program.m:5 program.m
 ```
 
 ### Combining with the Debugger CLI
@@ -45,7 +45,7 @@ Both flags can coexist. When combined, the postmortem report prints first,
 followed by the interactive CLI for deeper inspection:
 
 ```bash
-./bin/mantra --debugger-postmortem --debugger-cli program.m
+mantra --debugger-postmortem --debugger-cli program.m
 ```
 
 ## Report Structure
@@ -167,7 +167,7 @@ rule fail [ fail X => { assign_path "root.expr" + m n } ]
 Run with postmortem:
 
 ```bash
-./bin/mantra --debugger-postmortem fail.m
+mantra --debugger-postmortem fail.m
 ```
 
 Output:

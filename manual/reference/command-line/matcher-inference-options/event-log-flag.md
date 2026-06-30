@@ -13,17 +13,17 @@ result and normal output does not reveal which rule or state caused the change.
 
 ```bash
 # Default mode (diag level, text format)
-./bin/mantra --event-log program.m
+mantra --event-log program.m
 
 # Explicit modes
-./bin/mantra --event-log=diag program.m
-./bin/mantra --event-log=trace program.m
-./bin/mantra --event-log=json program.m
-./bin/mantra --event-log=text program.m
+mantra --event-log=diag program.m
+mantra --event-log=trace program.m
+mantra --event-log=json program.m
+mantra --event-log=text program.m
 
 # Combined modes (level + format)
-./bin/mantra --event-log=trace,json program.m
-./bin/mantra --event-log=diag,text program.m
+mantra --event-log=trace,json program.m
+mantra --event-log=diag,text program.m
 ```
 
 ## CLI Argument Parsing

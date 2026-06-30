@@ -509,16 +509,16 @@ The rule `f` matches `f x` and returns `x`. The alias `g` routes to `f`.
 
 ```bash
 # From stdin
-echo '[ + 1 2 3 ]' | ./bin/mantra
+echo '[ + 1 2 3 ]' | mantra
 
 # From file
-./bin/mantra program.m
+mantra program.m
 
 # With debug output
-./bin/mantra --debug program.m
+mantra --debug program.m
 
 # Pre-define variables
-./bin/mantra --set n=5 --eval program.m
+mantra --set n=5 --eval program.m
 ```
 
 ---

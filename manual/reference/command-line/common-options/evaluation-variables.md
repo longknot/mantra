@@ -6,8 +6,8 @@ inject expressions or predefine variables from the command line.
 ## `--eval` / `-e`
 
 ```bash
-./bin/mantra --eval program.m
-./bin/mantra -e program.m
+mantra --eval program.m
+mantra -e program.m
 ```
 
 Evaluates the output tree before printing. Without `--eval`, Mantra prints the
@@ -17,9 +17,9 @@ A program that produces `+ 1 2` will print the arithmetic form literally.
 With `--eval`, compute scopes resolve the arithmetic:
 
 ```bash
-$ echo '+ 1 2' | ./bin/mantra
+$ echo '+ 1 2' | mantra
 + 1 2
-$ echo '+ 1 2' | ./bin/mantra --eval
+$ echo '+ 1 2' | mantra --eval
 + 1 2
 ```
 
@@ -28,7 +28,7 @@ For expressions that need explicit computation, wrap them in a compute scope
 (\` \`):
 
 ```bash
-$ echo '` + 1 2 `' | ./bin/mantra
+$ echo '` + 1 2 `' | mantra
 + 3
 ```
 
@@ -37,7 +37,7 @@ Without a compute scope, the tree structure is preserved even with `--eval`.
 ## `--eval=EXPR`
 
 ```bash
-./bin/mantra --eval='+ 1 2'
+mantra --eval='+ 1 2'
 ```
 
 Appends `print { EXPR }` to the compiled source and runs it after all source
@@ -52,13 +52,13 @@ They execute in left-to-right order, each wrapped in its own `print { ... }`
 call:
 
 ```bash
-./bin/mantra --eval='+ 1 2' --eval='* 3 4'
+mantra --eval='+ 1 2' --eval='* 3 4'
 ```
 
 `--eval=EXPR` also has access to variables defined by `--set`:
 
 ```bash
-./bin/mantra --set n=5 --eval='+ n 1'
+mantra --set n=5 --eval='+ n 1'
 ```
 
 ### Examples
@@ -66,14 +66,14 @@ call:
 **Expression experiment:**
 
 ```bash
-$ ./bin/mantra --eval='+ 1 2'
+$ mantra --eval='+ 1 2'
 3
 ```
 
 **Variable reference (from test fixture `cli_eval_expr_append`):**
 
 ```bash
-$ ./bin/mantra --eval=x
+$ mantra --eval=x
 [ + 1 + 2 + 3 ]
 ```
 
@@ -90,7 +90,7 @@ scope to reduce the arithmetic.
 **Calling package functions:**
 
 ```bash
-$ ./bin/mantra tests/modules/pkg_main_import_utils_cat.m --eval='utils.cat [ 1 2 3 ] [ 4 5 6 ] [ 7 ]'
+$ mantra tests/modules/pkg_main_import_utils_cat.m --eval='utils.cat [ 1 2 3 ] [ 4 5 6 ] [ 7 ]'
 [ 1 2 3 4 5 6 7 ]
 ```
 
@@ -99,7 +99,7 @@ $ ./bin/mantra tests/modules/pkg_main_import_utils_cat.m --eval='utils.cat [ 1 2
 ## `--set NAME=EXPR`
 
 ```bash
-./bin/mantra --set x=5 program.m
+mantra --set x=5 program.m
 ```
 
 Predefines a variable in the runtime context before source execution begins.
@@ -110,8 +110,8 @@ The variable is available to all statements in the program.
 Two equivalent CLI forms:
 
 ```bash
-./bin/mantra --set NAME=EXPR program.m      # space-separated
-./bin/mantra --set=NAME=EXPR program.m      # compact form
+mantra --set NAME=EXPR program.m      # space-separated
+mantra --set=NAME=EXPR program.m      # compact form
 ```
 
 - `NAME` — variable identifier (must not be empty)
@@ -120,7 +120,7 @@ Two equivalent CLI forms:
   variables
 
 ```bash
-./bin/mantra --set x=5 --set y=10 --set rules='[ x => x + 1 ]' program.m
+mantra --set x=5 --set y=10 --set rules='[ x => x + 1 ]' program.m
 ```
 
 ### Examples
@@ -128,7 +128,7 @@ Two equivalent CLI forms:
 **Integer value (from test fixture `cli_set_integer_lookup`):**
 
 ```bash
-$ ./bin/mantra --set x=5
+$ mantra --set x=5
 print { x }
 5
 ```
@@ -142,7 +142,7 @@ print { x }
 **Tree structure (from test fixture `cli_set_expression_compute`):**
 
 ```bash
-$ ./bin/mantra --set x=[+1+2+3]
+$ mantra --set x=[+1+2+3]
 print `x`
 [ + 6 ]
 ```
@@ -159,7 +159,7 @@ holds that tree, and the `` ` `` compute scope reduces it to `[ + 6 ]`.
 **Repeat count (from test fixture `cli_set_repeat_count`):**
 
 ```bash
-$ ./bin/mantra --set n=3
+$ mantra --set n=3
 print { [ 7 ] : n }
 [ 7 ] [ 7 ] [ 7 ]
 ```
@@ -206,7 +206,7 @@ Multiple `--set` flags are processed left to right. Later definitions of the
 same variable name overwrite earlier ones:
 
 ```bash
-./bin/mantra --set x=1 --set x=2 program.m
+mantra --set x=1 --set x=2 program.m
 ```
 
 In this case, `x` resolves to `2` when the program runs.
@@ -214,7 +214,7 @@ In this case, `x` resolves to `2` when the program runs.
 Source code can also overwrite `--set` variables:
 
 ```bash
-$ ./bin/mantra --set x=5
+$ mantra --set x=5
 x = 10
 print { x }
 10
@@ -225,21 +225,21 @@ print { x }
 **Missing variable name:**
 
 ```bash
-$ ./bin/mantra --set =5 program.m
+$ mantra --set =5 program.m
 Error: Invalid --set argument: =5 (expected NAME=EXPR)
 ```
 
 **Missing value entirely:**
 
 ```bash
-$ ./bin/mantra --set program.m
+$ mantra --set program.m
 Error: Missing value for --set (expected NAME=EXPR)
 ```
 
 **Missing expression in `--eval=`:**
 
 ```bash
-$ ./bin/mantra --eval=
+$ mantra --eval=
 Error: Invalid --eval=EXPR argument: missing expression
 ```
 
@@ -249,7 +249,7 @@ In `--interactive` mode, `--set` variables are compiled and executed before the
 REPL prompt appears. They persist as context variables throughout the session:
 
 ```bash
-./bin/mantra --set x=42 --interactive
+mantra --set x=42 --interactive
 ```
 
 The variable `x` is pre-defined when the interactive prompt starts.
@@ -267,7 +267,7 @@ The variable `x` is pre-defined when the interactive prompt starts.
   `--set mantra.inference.policy="cost"`.
 - **Quick experiments** — combine `--set` with `--eval=` to test expressions
   without writing files:
-  `./bin/mantra --set n=10 --eval='+ n 1'`.
+  `mantra --set n=10 --eval='+ n 1'`.
 
 ## Combining with Other Flags
 
@@ -275,13 +275,13 @@ Evaluation and variable flags work with all output inspection and input flags:
 
 ```bash
 # Debug output with pre-defined variables
-./bin/mantra --debug --set n=10 --eval='+ n 1'
+mantra --debug --set n=10 --eval='+ n 1'
 
 # Raw output with inline expression
-./bin/mantra --raw --eval='[ 1 2 3 : 4 ]'
+mantra --raw --eval='[ 1 2 3 : 4 ]'
 
 # Evaluate output and inject a variable
-./bin/mantra --eval --set x=5 program.m
+mantra --eval --set x=5 program.m
 ```
 
 ## See Also

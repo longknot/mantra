@@ -9,7 +9,7 @@ command-line arguments and the state of the stdin file descriptor.
 ### File Input
 
 ```bash
-./bin/mantra program.m
+mantra program.m
 ```
 
 Passes a file path as a positional argument. Mantra opens the file and reads
@@ -34,7 +34,7 @@ Unexpected argument: <value>
 ### Standard Input (Pipe / Redirect)
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra
+echo '[ + 1 2 3 ]' | mantra
 ```
 
 Use standard input for small one-line examples and pipeline-driven workflows.
@@ -47,7 +47,7 @@ to a character device (`isatty`); if not, it treats it as redirected.
 ### Explicit stdin with `-`
 
 ```bash
-./bin/mantra -
+mantra -
 ```
 
 The positional `-` argument tells Mantra to read from stdin regardless of
@@ -63,8 +63,8 @@ Unexpected argument: -
 ## `--interactive` and `-i` (REPL Mode)
 
 ```bash
-./bin/mantra --interactive
-./bin/mantra -i
+mantra --interactive
+mantra -i
 ```
 
 Interactive mode processes input incrementally: each statement is compiled and
@@ -122,7 +122,7 @@ compiles and executes the file, then enters the interactive loop. This lets
 you load a program and continue working in the same runtime context:
 
 ```bash
-./bin/mantra --interactive program.m
+mantra --interactive program.m
 ```
 
 ### Pre-defined Variables in REPL
@@ -131,7 +131,7 @@ you load a program and continue working in the same runtime context:
 They persist as context variables throughout the session:
 
 ```bash
-./bin/mantra --interactive --set x=42
+mantra --interactive --set x=42
 ```
 
 The variable `x` is available immediately when the interactive prompt starts.
@@ -142,7 +142,7 @@ The variable `x` is available immediately when the interactive prompt starts.
 interactive loop so each expression's errors are caught individually:
 
 ```bash
-./bin/mantra --interactive --set n=5 --eval='+ n 1'
+mantra --interactive --set n=5 --eval='+ n 1'
 ```
 
 ## Execution Order

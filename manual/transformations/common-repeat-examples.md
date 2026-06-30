@@ -126,7 +126,7 @@ print { [ 7 ] : n }
 Run with `--set n=3`:
 
 ```bash
-./bin/mantra --set n=3 -e 'print { [ 7 ] : n }'
+mantra --set n=3 -e 'print { [ 7 ] : n }'
 ```
 
 Expected `OUTPUT`:

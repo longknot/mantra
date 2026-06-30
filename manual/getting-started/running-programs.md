@@ -9,16 +9,16 @@ expressions step by step.
 
 || Input Method | Best For |
 |---|---|---|
-| **Standard Input** | One-liners, shell pipelines, quick tests | `echo '...' \| ./bin/mantra` |
-| **File Input** | Multi-statement programs, imports, debugging | `./bin/mantra program.m` |
-| **Interactive (REPL)** | Exploring expressions, learning the language | `./bin/mantra --interactive` |
+| **Standard Input** | One-liners, shell pipelines, quick tests | `echo '...' \| mantra` |
+| **File Input** | Multi-statement programs, imports, debugging | `mantra program.m` |
+| **Interactive (REPL)** | Exploring expressions, learning the language | `mantra --interactive` |
 
 ## Standard Input
 
 Pipe source code to `bin/mantra` for quick validation without creating a file:
 
 ```bash
-echo '[ { 1 2 3 : 4 } ]' | ./bin/mantra
+echo '[ { 1 2 3 : 4 } ]' | mantra
 ```
 
 Mantra automatically detects redirected stdin — no special flag is required.
@@ -28,7 +28,7 @@ the runtime reads from it directly.
 For heredocs (multi-line input):
 
 ```bash
-./bin/mantra <<'EOF'
+mantra <<'EOF'
 x = [ 1 2 3 ]
 x ? [ y => y + 1 ]
 EOF
@@ -44,7 +44,7 @@ For details, see [Standard Input](running-programs/standard-input.md).
 Pass a file path as a positional argument for larger programs:
 
 ```bash
-./bin/mantra program.m
+mantra program.m
 ```
 
 Only one positional file argument is accepted. File input provides full source
@@ -62,7 +62,7 @@ print y
 Then run it:
 
 ```bash
-./bin/mantra double.m
+mantra double.m
 ```
 
 File input is required for programs that use `import` or `include` directives,
@@ -76,7 +76,7 @@ Mantra includes a built-in read-eval-print loop for exploring expressions
 interactively:
 
 ```bash
-./bin/mantra --interactive
+mantra --interactive
 ```
 
 At the `mantra> ` prompt, type expressions and press Enter to evaluate them:
@@ -100,7 +100,7 @@ Type `:quit` or `:exit` to leave the REPL.
 Combine `--interactive` with a file to load definitions and then explore:
 
 ```bash
-./bin/mantra --interactive program.m
+mantra --interactive program.m
 ```
 
 The file is compiled and its statements execute first. Then the REPL prompt
@@ -109,7 +109,7 @@ appears with all variables and definitions from the file available.
 ### REPL with Pre-defined Variables
 
 ```bash
-./bin/mantra --interactive --set n=10
+mantra --interactive --set n=10
 ```
 
 The `--set` variables are available immediately in the REPL session.
@@ -124,10 +124,10 @@ receives the source, the program will fail or produce unexpected results.
 
 ```bash
 # Correct — Mantra receives the backticks
-echo '`[ + 1 2 3 ] : 3`' | ./bin/mantra
+echo '`[ + 1 2 3 ] : 3`' | mantra
 
 # Incorrect — shell interprets backticks before Mantra
-echo "`[ + 1 2 3 ] : 3`" | ./bin/mantra
+echo "`[ + 1 2 3 ] : 3`" | mantra
 ```
 
 Single quotes prevent all shell interpretation — no variable expansion, no
@@ -143,7 +143,7 @@ All input methods work with command-line flags. The most useful combinations:
 ### Pre-defined Variables (`--set`)
 
 ```bash
-echo 'x * 2' | ./bin/mantra --set x=21
+echo 'x * 2' | mantra --set x=21
 ```
 
 Output: `42`
@@ -155,7 +155,7 @@ are available immediately. The flag is repeatable — you can pass multiple
 ### Eval Expressions (`--eval=`)
 
 ```bash
-echo 'x = 5' | ./bin/mantra --eval='x + 10'
+echo 'x = 5' | mantra --eval='x + 10'
 ```
 
 The `--eval=` expressions run after the program is fully processed. They are
@@ -164,7 +164,7 @@ each wrapped as `print { EXPR }` and executed in the same runtime context.
 ### Debug Output (`--debug`)
 
 ```bash
-echo '[ { 1 2 3 : 4 } ]' | ./bin/mantra --debug
+echo '[ { 1 2 3 : 4 } ]' | mantra --debug
 ```
 
 Prints the output after every statement, useful for tracing multi-statement
@@ -173,7 +173,7 @@ programs where you want to see intermediate results.
 ### Raw Output (`--raw`)
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra --raw
+echo '[ + 1 2 3 ]' | mantra --raw
 ```
 
 Prints unformatted `TreeValue` output instead of the default formatted tree.
@@ -197,7 +197,7 @@ This means `--set` variables are always available in your program, and
 ### File Not Found
 
 ```bash
-./bin/mantra nonexistent.m
+mantra nonexistent.m
 ```
 
 ```
@@ -214,7 +214,7 @@ using file input, the error message includes the file path and line number.
 If the shell interprets backticks before Mantra receives them:
 
 ```bash
-$ echo "`[ + 1 2 3 ] : 3`" | ./bin/mantra
+$ echo "`[ + 1 2 3 ] : 3`" | mantra
 bash: [ + 1 2 3 ] : 3: command not found
 ```
 

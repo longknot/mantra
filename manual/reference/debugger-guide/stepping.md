@@ -86,7 +86,7 @@ Given a program with three statements:
 A mixed stepping session might look like:
 
 ```
-./bin/mantra --debugger-cli --break-source=1 program.m
+mantra --debugger-cli --break-source=1 program.m
 
 Debugger paused: breakpoint
 Breakpoint hit: source program.m:1

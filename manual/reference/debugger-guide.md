@@ -10,7 +10,7 @@ to inspect the call stack, variables, and settings.
 Attach the debugger and break on the first statement of a program:
 
 ```bash
-./bin/mantra --debugger-cli program.m
+mantra --debugger-cli program.m
 ```
 
 This enters the interactive debugger prompt. Type `help` for available commands.
@@ -18,13 +18,13 @@ This enters the interactive debugger prompt. Type `help` for available commands.
 Break on a specific source line before running:
 
 ```bash
-./bin/mantra --debugger-cli --break-source=42 program.m
+mantra --debugger-cli --break-source=42 program.m
 ```
 
 Or stop on an exception without an interactive prompt:
 
 ```bash
-./bin/mantra --debugger-postmortem program.m
+mantra --debugger-postmortem program.m
 ```
 
 ## Debugger Modes
@@ -56,25 +56,25 @@ the command line or add them interactively at the debugger prompt.
 Example — break when `main.ping` dispatches:
 
 ```bash
-./bin/mantra --debugger-cli --break-callable=main.ping program.m
+mantra --debugger-cli --break-callable=main.ping program.m
 ```
 
 Example — break on line 3 of the main file:
 
 ```bash
-./bin/mantra --debugger-cli --break-source=3 program.m
+mantra --debugger-cli --break-source=3 program.m
 ```
 
 Example — break on a specific file and line:
 
 ```bash
-./bin/mantra --debugger-cli --break-source=program.m:42 program.m
+mantra --debugger-cli --break-source=program.m:42 program.m
 ```
 
 Source breakpoints support wildcard file names for included or imported files:
 
 ```bash
-./bin/mantra --debugger-cli --break-source='*sub.m:3' main.m
+mantra --debugger-cli --break-source='*sub.m:3' main.m
 ```
 
 Source breakpoint file names are matched against both the full file path and the
@@ -93,7 +93,7 @@ support two wildcard characters:
 Matching is **case-sensitive**.
 
 ```bash
-./bin/mantra --debugger-cli --break-callable='main.pi?' program.m
+mantra --debugger-cli --break-callable='main.pi?' program.m
 # matches main.ping but not main.pingpong
 ```
 
@@ -236,7 +236,7 @@ terminal, the prompt hides the `dbg> ` prompt text automatically:
 
 ```bash
 printf '%s\n' 'reason' 'bt' 'events 8' 'quit' | \
-  ./bin/mantra --debugger-cli --break-rule='*foo*' program.m
+  mantra --debugger-cli --break-rule='*foo*' program.m
 ```
 
 This is useful in CI/CD pipelines, test scripts, or when you want a repeatable

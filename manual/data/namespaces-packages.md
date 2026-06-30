@@ -73,7 +73,7 @@ import demo/core;       // looks for packages/demo/core/package.m
 Third-party collections can be added with repeatable package roots:
 
 ```bash
-./bin/mantra --package-root /opt/mantra-packages program.m
+mantra --package-root /opt/mantra-packages program.m
 ```
 
 Here `/opt/mantra-packages` directly contains logical paths, so

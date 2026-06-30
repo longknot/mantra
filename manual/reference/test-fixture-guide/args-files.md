@@ -17,7 +17,7 @@ A complete fixture consists of:
 When the test runner executes a case, it runs:
 
 ```bash
-printf '%s\n' "$input_text" | ./bin/mantra --raw "${case_args[@]}"
+printf '%s\n' "$input_text" | mantra --raw "${case_args[@]}"
 ```
 
 The `--raw` flag is always added automatically. Any arguments from the

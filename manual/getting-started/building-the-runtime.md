@@ -76,7 +76,7 @@ version control.
 Confirm the binary runs by printing the help screen:
 
 ```bash
-./bin/mantra --help
+mantra --help
 ```
 
 You should see an ASCII art banner followed by a usage line and a list of CLI
@@ -85,7 +85,7 @@ flags. If this works, the build succeeded.
 ### Run a Quick Test
 
 ```bash
-echo '[ { 1 2 3 : 4 } ]' | ./bin/mantra
+echo '[ { 1 2 3 : 4 } ]' | mantra
 ```
 
 You should see diagnostic output sections including `INPUT:`, `OUTPUT:`, and

@@ -44,7 +44,7 @@ With `--raw`, `print` bypasses formatting entirely and uses `TreeValue`
 (string representation of the raw tree) instead:
 
 ```bash
-./bin/mantra --raw <<< 'print { 1 + 1 }'
+mantra --raw <<< 'print { 1 + 1 }'
 ```
 
 **Output:**

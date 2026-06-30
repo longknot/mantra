@@ -30,7 +30,7 @@ An output statement is one whose first node is a `print`, `tree`, or `ir`
 keyword — or the final expression in the program.
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra
+echo '[ + 1 2 3 ]' | mantra
 ```
 
 Output:
@@ -52,7 +52,7 @@ The sections you may encounter:
 Each statement's source text appears prefixed with `> ` before evaluation:
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra --show-input
+echo '[ + 1 2 3 ]' | mantra --show-input
 ```
 
 Output:
@@ -71,7 +71,7 @@ in multi-statement programs.
 The tokenizer output appears before program execution:
 
 ```bash
-echo 'print { 1 }' | ./bin/mantra --show-tokens
+echo 'print { 1 }' | mantra --show-tokens
 ```
 
 Output:
@@ -91,7 +91,7 @@ Every statement's result is printed, not just output nodes:
 
 ```bash
 echo 'x = 5
-x + 1' | ./bin/mantra --debug
+x + 1' | mantra --debug
 ```
 
 Output:
@@ -122,7 +122,7 @@ and token reference. The value `2147483647` (`MaxInt` / `EOT`) means
 Unformatted `TreeValue` output instead of the pretty-printed result:
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra --raw
+echo '[ + 1 2 3 ]' | mantra --raw
 ```
 
 This shows the tree as stored in memory, without operator decoration or
@@ -223,7 +223,7 @@ For writing fixtures, run the program with the same flags you intend to
 use and capture the output:
 
 ```bash
-echo '[ + 1 2 3 ] : 3' | ./bin/mantra > tests/cases/my_test.out
+echo '[ + 1 2 3 ] : 3' | mantra > tests/cases/my_test.out
 ```
 
 See [Test Fixture Guide](../reference/test-fixture-guide.md) for full
@@ -234,7 +234,7 @@ details.
 ### See Everything
 
 ```bash
-./bin/mantra --show-tokens --show-input --debug program.m
+mantra --show-tokens --show-input --debug program.m
 ```
 
 Shows tokens, input echo, and every statement's result.
@@ -242,7 +242,7 @@ Shows tokens, input echo, and every statement's result.
 ### Debug Tree Structure
 
 ```bash
-./bin/mantra --debug-ir program.m
+mantra --debug-ir program.m
 ```
 
 Shows the AST shape for each statement before evaluation.
@@ -250,7 +250,7 @@ Shows the AST shape for each statement before evaluation.
 ### Stable Output for Scripting
 
 ```bash
-./bin/mantra --raw program.m
+mantra --raw program.m
 ```
 
 Produces machine-parseable output without formatting variations.

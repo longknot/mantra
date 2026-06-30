@@ -28,16 +28,16 @@ Mantra accepts source from three channels:
 
 ```bash
 # File input
-./bin/mantra program.m
+mantra program.m
 
 # Standard input (pipe)
-echo '[ + 1 2 3 ]' | ./bin/mantra
+echo '[ + 1 2 3 ]' | mantra
 
 # Explicit stdin
-./bin/mantra -
+mantra -
 
 # Interactive REPL
-./bin/mantra --interactive
+mantra --interactive
 ```
 
 When no file argument and no flags are given, Mantra detects whether stdin is
@@ -54,21 +54,21 @@ expressions or predefine variables from the command line.
 
 ```bash
 # Evaluate output before printing
-./bin/mantra --eval program.m
+mantra --eval program.m
 
 # Append and run an expression
-./bin/mantra --eval='+ 1 2'
+mantra --eval='+ 1 2'
 
 # Predefine variables (repeatable)
-./bin/mantra --set x=5 --set y=hello program.m
+mantra --set x=5 --set y=hello program.m
 ```
 
 Both `--set` and `--eval=` accept the `--flag=value` syntax with the `=` sign
 or a separate argument:
 
 ```bash
-./bin/mantra --set x=5    # compact form
-./bin/mantra --set x=5    # space-separated form
+mantra --set x=5    # compact form
+mantra --set x=5    # space-separated form
 ```
 
 You can repeat `--set` and `--eval=` multiple times on a single invocation.
@@ -82,19 +82,19 @@ These flags expose the parser, formatter, and execution pipeline for debugging.
 
 ```bash
 # Unformatted TreeValue output (no pretty-printing)
-./bin/mantra --raw program.m
+mantra --raw program.m
 
 # Print every statement output
-./bin/mantra --debug program.m
+mantra --debug program.m
 
 # Parser-friendly IR for non-output statements
-./bin/mantra --debug-ir program.m
+mantra --debug-ir program.m
 
 # Show input lines prefixed with ">"
-./bin/mantra --show-input program.m
+mantra --show-input program.m
 
 # Show tokenizer output during compile
-./bin/mantra --show-tokens program.m
+mantra --show-tokens program.m
 ```
 
 `--show-input` is also accepted as `--input`.
@@ -108,7 +108,7 @@ on each flag and example output.
 ## Help
 
 ```bash
-./bin/mantra --help
+mantra --help
 ```
 
 Prints the complete option list from the local binary. This is the quickest way
@@ -124,13 +124,13 @@ path. Use it when your project imports packages that live outside the local
 
 ```bash
 # Single external root
-./bin/mantra --package-root /opt/mantra-pkgs program.m
+mantra --package-root /opt/mantra-pkgs program.m
 
 # Multiple roots (searched in order)
-./bin/mantra --package-root /opt/mantra-pkgs --package-root ~/my-pkgs program.m
+mantra --package-root /opt/mantra-pkgs --package-root ~/my-pkgs program.m
 
 # Compact form
-./bin/mantra --package-root=/opt/mantra-pkgs program.m
+mantra --package-root=/opt/mantra-pkgs program.m
 ```
 
 Project-local `packages/` directories always take precedence. External roots
@@ -145,13 +145,13 @@ Common options can be combined freely with other flag categories. Examples:
 
 ```bash
 # Debug with variable injection
-./bin/mantra --debug --set n=10 program.m
+mantra --debug --set n=10 program.m
 
 # Tokenize and evaluate output
-./bin/mantra --show-tokens --eval program.m
+mantra --show-tokens --eval program.m
 
 # Raw output with inline expression
-./bin/mantra --raw --eval='[ 1 2 3 ]'
+mantra --raw --eval='[ 1 2 3 ]'
 ```
 
 For debugger-specific flags (`--debugger`, `--break-*`, etc.), see

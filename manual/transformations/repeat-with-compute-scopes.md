@@ -157,7 +157,7 @@ You can also use `--set` on the CLI to pre-define variables that drive compute
 expressions:
 
 ```bash
-./bin/mantra --set x='[ + 1 2 3 ]' -e 'print `x`'
+mantra --set x='[ + 1 2 3 ]' -e 'print `x`'
 ```
 
 ## Key Differences: Compute Scope vs. Tilde
@@ -175,7 +175,7 @@ Backticks are interpreted by most shells. Always wrap Mantra programs in single
 quotes when passing them through a shell:
 
 ```bash
-echo '`[ + 1 2 3 ] : 3`' | ./bin/mantra
+echo '`[ + 1 2 3 ] : 3`' | mantra
 ```
 
 Using double quotes will cause the shell to interpret the backticks as command

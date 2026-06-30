@@ -4,7 +4,7 @@ File input is the primary way to run Mantra programs. Pass a file path as a
 positional argument and the runtime reads, parses, and executes the source.
 
 ```bash
-./bin/mantra mantra.m
+mantra mantra.m
 ```
 
 Only one positional file argument is accepted; a second raises:
@@ -48,7 +48,7 @@ print y
 Save this as `double.m` and run:
 
 ```bash
-./bin/mantra double.m
+mantra double.m
 ```
 
 Statements are compiled top to bottom and executed in the same runtime context.
@@ -127,7 +127,7 @@ File input works with all command-line flags. Common combinations:
 ### Pre-defined variables (`--set`)
 
 ```bash
-./bin/mantra program.m --set n=10
+mantra program.m --set n=10
 ```
 
 The `--set` variables are compiled and executed before the file is read, so
@@ -136,7 +136,7 @@ they are available when the file runs.
 ### Eval expressions (`--eval=`)
 
 ```bash
-./bin/mantra program.m --eval='x + 1'
+mantra program.m --eval='x + 1'
 ```
 
 The `--eval=` expressions run after the file is fully processed. They are each
@@ -145,7 +145,7 @@ wrapped as `print { EXPR }` and executed in the same runtime context.
 ### Debug output (`--debug`)
 
 ```bash
-./bin/mantra program.m --debug
+mantra program.m --debug
 ```
 
 Prints the output after every statement, useful for tracing multi-statement
@@ -154,7 +154,7 @@ programs.
 ### Raw output (`--raw`)
 
 ```bash
-./bin/mantra program.m --raw
+mantra program.m --raw
 ```
 
 Prints unformatted `TreeValue` output instead of the default formatted tree.
@@ -162,14 +162,14 @@ Prints unformatted `TreeValue` output instead of the default formatted tree.
 ### Debugger (`--debugger`)
 
 ```bash
-./bin/mantra program.m --debugger
+mantra program.m --debugger
 ```
 
 Attaches the event recorder. Combined with `--break-source`, this enables
 source-level debugging:
 
 ```bash
-./bin/mantra program.m --debugger --break-source program.m:5:1
+mantra program.m --debugger --break-source program.m:5:1
 ```
 
 ## Execution Order with File Input
@@ -191,7 +191,7 @@ This means `--set` variables are always available in the file program, and
 Use `--interactive` to load a file and then enter interactive mode:
 
 ```bash
-./bin/mantra --interactive program.m
+mantra --interactive program.m
 ```
 
 The file is compiled and its statements execute first. Then the REPL prompt
@@ -212,7 +212,7 @@ When file input encounters errors, the behavior depends on the error type:
 ### File Not Found
 
 ```bash
-./bin/mantra nonexistent.m
+mantra nonexistent.m
 ```
 
 ```

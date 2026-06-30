@@ -19,7 +19,7 @@ For related matcher configuration, see:
 Enable matcher backtracking for infix `--` (match-any) patterns.
 
 ```bash
-./bin/mantra --backtracking program.m
+mantra --backtracking program.m
 ```
 
 ### Default Behavior: Greedy Match (no backtracking)
@@ -120,7 +120,7 @@ lets the entire pattern succeed.
 Disable matcher rule guards (experimental).
 
 ```bash
-./bin/mantra --no-guards program.m
+mantra --no-guards program.m
 ```
 
 ### Rule Guards
@@ -257,11 +257,11 @@ Matcher control flags can be combined with other matcher and inference flags:
 
 ```bash
 # Backtracking with event logging for debugging
-./bin/mantra --backtracking --event-log=trace program.m
+mantra --backtracking --event-log=trace program.m
 
 # Disabling guards with head dispatch off
-./bin/mantra --no-guards --no-head-dispatch program.m
+mantra --no-guards --no-head-dispatch program.m
 
 # Backtracking with inference beam search
-./bin/mantra --backtracking --beam-width=2 program.m
+mantra --backtracking --beam-width=2 program.m
 ```

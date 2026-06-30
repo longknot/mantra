@@ -8,21 +8,21 @@ system-wide or vendored third-party code.
 ## Usage
 
 ```bash
-./bin/mantra --package-root /opt/mantra-pkgs program.m
+mantra --package-root /opt/mantra-pkgs program.m
 ```
 
 Two equivalent CLI forms:
 
 ```bash
-./bin/mantra --package-root /opt/mantra-pkgs program.m   # space-separated
-./bin/mantra --package-root=/opt/mantra-pkgs program.m   # compact form
+mantra --package-root /opt/mantra-pkgs program.m   # space-separated
+mantra --package-root=/opt/mantra-pkgs program.m   # compact form
 ```
 
 The flag is **repeatable** — use it multiple times to add several search
 roots. They are searched in the order they appear on the command line:
 
 ```bash
-./bin/mantra \
+mantra \
   --package-root /opt/mantra-pkgs \
   --package-root ~/my-pkgs \
   program.m
@@ -36,7 +36,7 @@ is kept:
 
 ```bash
 # Only /opt/mantra-pkgs is registered once:
-./bin/mantra --package-root /opt/mantra-pkgs --package-root /opt/mantra-pkgs program.m
+mantra --package-root /opt/mantra-pkgs --package-root /opt/mantra-pkgs program.m
 ```
 
 ### Path Normalization
@@ -132,7 +132,7 @@ Package paths in `import` statements are normalized before resolution:
 - Empty segments, `.`, and `..` are rejected
 
 ```bash
-$ ./bin/mantra --eval='import a/../b;' program.m
+$ mantra --eval='import a/../b;' program.m
 Invalid package path: a/../b
 ```
 
@@ -141,21 +141,21 @@ Invalid package path: a/../b
 ### Directory not found:
 
 ```bash
-$ ./bin/mantra --package-root /nonexistent program.m
+$ mantra --package-root /nonexistent program.m
 Package root not found: /nonexistent
 ```
 
 ### Empty path:
 
 ```bash
-$ ./bin/mantra --package-root '' program.m
+$ mantra --package-root '' program.m
 Invalid --package-root argument: missing path
 ```
 
 ### Missing value (flag is last argument):
 
 ```bash
-$ ./bin/mantra --package-root program.m
+$ mantra --package-root program.m
 Missing value for --package-root
 ```
 
@@ -207,7 +207,7 @@ package utils;
 EOF
 
 # Use it from any project:
-./bin/mantra --package-root /opt/mantra-pkgs program.m
+mantra --package-root /opt/mantra-pkgs program.m
 ```
 
 ```mantra

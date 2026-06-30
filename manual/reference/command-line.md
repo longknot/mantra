@@ -13,25 +13,25 @@ Usage: mantra [options] [file]
 **From a file** — the standard way to run a Mantra program:
 
 ```bash
-./bin/mantra program.m
+mantra program.m
 ```
 
 **From standard input** — useful for one-line experiments:
 
 ```bash
-echo '[ + 1 2 3 ]' | ./bin/mantra
+echo '[ + 1 2 3 ]' | mantra
 ```
 
 **Interactive REPL** — for incremental exploration:
 
 ```bash
-./bin/mantra --interactive
+mantra --interactive
 ```
 
 **Evaluate an expression** — without writing a file:
 
 ```bash
-./bin/mantra --eval='+ 1 2 3'
+mantra --eval='+ 1 2 3'
 ```
 
 ## Flag Reference
@@ -101,16 +101,16 @@ Flags can be combined freely. Common patterns:
 
 ```bash
 # Debug with full token and IR visibility
-./bin/mantra --debug --show-tokens --debug-ir program.m
+mantra --debug --show-tokens --debug-ir program.m
 
 # Predefine variables and evaluate
-./bin/mantra --set n=5 --set rules='[ x => x + 1 ]' --eval program.m
+mantra --set n=5 --set rules='[ x => x + 1 ]' --eval program.m
 
 # Inference with controlled search
-./bin/mantra --beam-width 3 --congruence-budget 2 program.m
+mantra --beam-width 3 --congruence-budget 2 program.m
 
 # Matcher event tracing in JSON
-./bin/mantra --event-log=trace,json program.m
+mantra --event-log=trace,json program.m
 ```
 
 ## Detailed Pages

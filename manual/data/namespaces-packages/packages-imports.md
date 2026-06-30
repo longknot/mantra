@@ -50,7 +50,7 @@ Use the repeatable `--package-root PATH` option to add third-party package
 collections:
 
 ```bash
-./bin/mantra \
+mantra \
   --package-root /opt/mantra-packages \
   --package-root ./vendor/mantra \
   app.m

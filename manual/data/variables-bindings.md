@@ -180,7 +180,7 @@ defined this way are available in the first statement of the program and persist
 throughout execution.
 
 ```bash
-./bin/mantra --set n=3 --set name="world" program.m
+mantra --set n=3 --set name="world" program.m
 ```
 
 Multiple `--set` flags are processed left to right; later definitions of the
@@ -188,7 +188,7 @@ same name overwrite earlier ones. The expression is parsed as Mantra source, not
 as a literal string, so you can pass structured values:
 
 ```bash
-./bin/mantra --set rules='[ x => x + 1 ]' program.m
+mantra --set rules='[ x => x + 1 ]' program.m
 ```
 
 For details, see [CLI Set](variables-bindings/cli-set.md).

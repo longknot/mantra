@@ -8,7 +8,7 @@ re-evaluates output before printing — a separate but related feature.
 
 ```bash
 # Append and run an expression
-./bin/mantra --eval='+ 1 2'
+mantra --eval='+ 1 2'
 ```
 
 This wraps the expression as `print { EXPR }` and runs it after all source
@@ -31,7 +31,7 @@ reference variables defined in the program.
 ### Basic Example
 
 ```bash
-echo 'x = [ + 1 2 3 ]' | ./bin/mantra --eval='x'
+echo 'x = [ + 1 2 3 ]' | mantra --eval='x'
 ```
 
 Output:
@@ -49,7 +49,7 @@ scope, not a compute scope.
 To trigger arithmetic reduction, wrap the expression in backticks:
 
 ```bash
-echo 'x = [ + 1 2 3 ]' | ./bin/mantra --eval='`x`'
+echo 'x = [ + 1 2 3 ]' | mantra --eval='`x`'
 ```
 
 Output:
@@ -64,7 +64,7 @@ You can use `--eval=EXPR` multiple times. Each expression is wrapped
 independently in `print { ... }` and they run sequentially:
 
 ```bash
-echo '' | ./bin/mantra --eval='+ 1 2' --eval='* 3 4'
+echo '' | mantra --eval='+ 1 2' --eval='* 3 4'
 ```
 
 Output:
@@ -80,7 +80,7 @@ Output:
 access any variable defined before it:
 
 ```bash
-echo 'y = 20' | ./bin/mantra --set 'x=10' --eval='`x + y`'
+echo 'y = 20' | mantra --set 'x=10' --eval='`x + y`'
 ```
 
 Output:
@@ -104,10 +104,10 @@ This is distinct from `--eval=EXPR` — the flag takes no argument.
 
 ```bash
 # Evaluate output before printing (no expression appended)
-./bin/mantra --eval program.m
+mantra --eval program.m
 
 # Combined with --eval=EXPR
-./bin/mantra --eval --eval='+ 1 2'
+mantra --eval --eval='+ 1 2'
 ```
 
 The `--eval` flag is useful when output contains evaluation scopes that should
@@ -136,7 +136,7 @@ This means:
 
 ```bash
 # Empty expression — rejected
-./bin/mantra --eval=''
+mantra --eval=''
 ```
 
 Output:
@@ -147,7 +147,7 @@ Error: Invalid --eval=EXPR argument: missing expression
 
 ```bash
 # No input source — shows help
-./bin/mantra --eval='+ 1 2'
+mantra --eval='+ 1 2'
 ```
 
 Output:
@@ -165,7 +165,7 @@ no input is provided and no file is specified, the runtime shows help.
 ### Quick Arithmetic
 
 ```bash
-echo '' | ./bin/mantra --eval='` + 10 20 30 `'
+echo '' | mantra --eval='` + 10 20 30 `'
 ```
 
 Output:
@@ -177,7 +177,7 @@ Output:
 ### Inspecting Variables
 
 ```bash
-echo 'x = [ 1 2 3 ]' | ./bin/mantra --eval='x'
+echo 'x = [ 1 2 3 ]' | mantra --eval='x'
 ```
 
 Output:
@@ -189,7 +189,7 @@ Output:
 ### Combining with --set
 
 ```bash
-echo '' | ./bin/mantra --set 'n=5' --set 'm=3' --eval='`n * m`'
+echo '' | mantra --set 'n=5' --set 'm=3' --eval='`n * m`'
 ```
 
 Output:
@@ -203,9 +203,9 @@ Output:
 Use `--eval=EXPR` to test expressions against a program's variable state:
 
 ```bash
-./bin/mantra program.m --eval='result'
-./bin/mantra program.m --eval='`result + 1`'
-./bin/mantra program.m --eval='`result * 2`'
+mantra program.m --eval='result'
+mantra program.m --eval='`result + 1`'
+mantra program.m --eval='`result * 2`'
 ```
 
 ## When to Use --eval vs. Other Approaches

@@ -107,7 +107,7 @@ etc.) are reduced. Non-computable terms pass through unchanged.
 When passing backtick forms through a shell, wrap the program in single quotes:
 
 ```bash
-echo '` + 1 2 3 `' | ./bin/mantra
+echo '` + 1 2 3 `' | mantra
 ```
 
 See also: [Compute Scopes](compute-scopes.md)

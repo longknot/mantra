@@ -392,7 +392,7 @@ Set these inside `{ ... }` evaluation scopes:
 The same settings can be passed on the command line:
 
 ```bash
-./bin/mantra --beam-width 2 --congruence-budget 5 program.m
+mantra --beam-width 2 --congruence-budget 5 program.m
 ```
 
 ### Settings Reference

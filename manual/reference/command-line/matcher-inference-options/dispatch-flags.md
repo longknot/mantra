@@ -15,7 +15,7 @@ Enable implicit rule dispatch for `{ head ... }` forms. This is the **default**
 behavior.
 
 ```bash
-./bin/mantra --head-dispatch program.m
+mantra --head-dispatch program.m
 ```
 
 When head dispatch is enabled, the runtime checks whether the head identifier
@@ -135,7 +135,7 @@ scopes normally, but the head identifier is **not** treated as an implicit
 rule invocation.
 
 ```bash
-./bin/mantra --no-head-dispatch program.m
+mantra --no-head-dispatch program.m
 ```
 
 Use this flag when you want explicit control over when and how rules are

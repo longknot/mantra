@@ -16,7 +16,7 @@ the proof trace in a `witness.wN` variable for inspection.
 Set the maximum number of sub-expression rewrites per `|=` inference step.
 
 ```bash
-./bin/mantra --congruence-budget=1 program.m
+mantra --congruence-budget=1 program.m
 ```
 
 **Default:** `-1` (unlimited)
@@ -119,7 +119,7 @@ The target `[ 1 ]` is reached, so the inference succeeds.
 Set the beam width for `|=` proof search.
 
 ```bash
-./bin/mantra --beam-width=2 program.m
+mantra --beam-width=2 program.m
 ```
 
 **Default:** `1`

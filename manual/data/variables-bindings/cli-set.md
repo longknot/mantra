@@ -8,8 +8,8 @@ variable is available immediately in the first statement of the program.
 Two equivalent CLI forms:
 
 ```bash
-./bin/mantra --set NAME=EXPR program.m
-./bin/mantra --set=NAME=EXPR program.m
+mantra --set NAME=EXPR program.m
+mantra --set=NAME=EXPR program.m
 ```
 
 - `NAME` — variable identifier (must not be empty)
@@ -18,7 +18,7 @@ Two equivalent CLI forms:
   variables
 
 ```bash
-./bin/mantra --set x=5 --set y=10 program.m
+mantra --set x=5 --set y=10 program.m
 ```
 
 The short form `--set=` and the long form `--set` (space-separated) accept the
@@ -83,7 +83,7 @@ parameters, and any other context that resolves variables.
 ### String and Complex Expressions
 
 ```bash
-./bin/mantra --set rules='[ x => x + 1 ]' program.m
+mantra --set rules='[ x => x + 1 ]' program.m
 ```
 
 Quoted shell expressions let you pass multi-token Mantra structures. The value
@@ -123,7 +123,7 @@ Multiple `--set` flags are processed left to right. Later definitions of the
 same variable name overwrite earlier ones:
 
 ```bash
-./bin/mantra --set x=1 --set x=2 program.m
+mantra --set x=1 --set x=2 program.m
 ```
 
 In this case, `x` resolves to `2` when the program runs.

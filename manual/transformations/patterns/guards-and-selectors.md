@@ -126,7 +126,7 @@ treated as true; zero or a missing node is treated as false.
 Guards can be disabled globally via CLI flag:
 
 ```bash
-./bin/mantra --no-guards program.m
+mantra --no-guards program.m
 ```
 
 When disabled, `MatcherGuardsEnabled` is set to false. Rules with guards fire

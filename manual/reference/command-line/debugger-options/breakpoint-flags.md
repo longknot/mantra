@@ -21,13 +21,13 @@ The name is the fully-qualified callable name including the namespace prefix.
 
 ```bash
 # Break when main.ping dispatches
-./bin/mantra --debugger-cli --break-callable=main.ping program.m
+mantra --debugger-cli --break-callable=main.ping program.m
 
 # Break on any callable in the lib namespace
-./bin/mantra --debugger-cli --break-callable='lib/*' program.m
+mantra --debugger-cli --break-callable='lib/*' program.m
 
 # Break on callables starting with main.p
-./bin/mantra --debugger-cli --break-callable='main.p*' program.m
+mantra --debugger-cli --break-callable='main.p*' program.m
 ```
 
 The breakpoint fires before the callable body executes. The debugger stack will
@@ -40,10 +40,10 @@ pattern matches against the textual representation of the statement.
 
 ```bash
 # Break on any statement containing "ping"
-./bin/mantra --debugger-cli --break-statement='* ping *' program.m
+mantra --debugger-cli --break-statement='* ping *' program.m
 
 # Break on statements with assign
-./bin/mantra --debugger-cli --break-statement='*assign*' program.m
+mantra --debugger-cli --break-statement='*assign*' program.m
 ```
 
 ## `--break-source`
@@ -53,20 +53,20 @@ three formats:
 
 ```bash
 # Break on line 42 of the main input file
-./bin/mantra --debugger-cli --break-source=42 program.m
+mantra --debugger-cli --break-source=42 program.m
 
 # Break on line 42 of program.m
-./bin/mantra --debugger-cli --break-source=program.m:42 program.m
+mantra --debugger-cli --break-source=program.m:42 program.m
 
 # Break on line 10, column 5 of lib.m
-./bin/mantra --debugger-cli --break-source=lib.m:10:5 program.m
+mantra --debugger-cli --break-source=lib.m:10:5 program.m
 ```
 
 File names support wildcards for imported or included files:
 
 ```bash
 # Break on line 3 of any file ending in sub.m
-./bin/mantra --debugger-cli --break-source='*sub.m:3' main.m
+mantra --debugger-cli --break-source='*sub.m:3' main.m
 ```
 
 ## `--break-rule`
@@ -76,10 +76,10 @@ matches against the rule name.
 
 ```bash
 # Break when any rule matching *transform* fires
-./bin/mantra --debugger-cli --break-rule='*transform*' program.m
+mantra --debugger-cli --break-rule='*transform*' program.m
 
 # Break when main.fail rule probes
-./bin/mantra --debugger-cli --break-rule=main.fail program.m
+mantra --debugger-cli --break-rule=main.fail program.m
 ```
 
 The breakpoint fires only on a successful probe — if the rule does not match,
@@ -92,10 +92,10 @@ debugging proof search and beam search behavior.
 
 ```bash
 # Break when an inference state containing "step=1" is entered
-./bin/mantra --debugger-cli --break-inference='*step=1*' program.m
+mantra --debugger-cli --break-inference='*step=1*' program.m
 
 # Break on inference states with beam=3
-./bin/mantra --debugger-cli --break-inference='*beam=3*' program.m
+mantra --debugger-cli --break-inference='*beam=3*' program.m
 ```
 
 ## Multiple Breakpoints
@@ -103,7 +103,7 @@ debugging proof search and beam search behavior.
 You can combine multiple `--break-*` flags to set several breakpoints:
 
 ```bash
-./bin/mantra --debugger-cli \
+mantra --debugger-cli \
   --break-callable=main.ping \
   --break-callable=main.fail \
   --break-source=program.m:5 \

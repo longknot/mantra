@@ -144,7 +144,7 @@ When you pass backticks through a shell, wrap the full program in single quotes
 so the shell does not treat them as command substitution:
 
 ```bash
-echo '` + 1 2 3 `' | ./bin/mantra
+echo '` + 1 2 3 `' | mantra
 ```
 
 ## When Computation Does Not Reduce

@@ -275,7 +275,7 @@ receives the full invocation and rewrites it into a selection query.
 Head dispatch is enabled by default. Use `--no-head-dispatch` to disable it:
 
 ```bash
-./bin/mantra --no-head-dispatch program.m
+mantra --no-head-dispatch program.m
 ```
 
 With head dispatch disabled, invocation-like forms do not trigger implicit rule
